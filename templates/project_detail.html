@@ -1,11 +1,10 @@
 {% extends "base.html" %}
-{% from "macros/tech_icons.html" import icon %}
 
 {% block title %}{{ project.title }} | Chelsie Salome{% endblock %}
 
 {% block content %}
 <div class="detail-page">
-  <div class="detail-container container">
+  <div class="detail-wrap">
 
     <a href="/#projects" class="back-link">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
@@ -14,622 +13,241 @@
 
     <!-- ===== ARCHITECTURE DIAGRAM ===== -->
     <div class="diagram-container">
+
       {% if project.diagram_type == 'gke' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GKE microservices architecture diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Developer -->
-        <rect x="20" y="130" width="90" height="50" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="65" y="150" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">Developer</text>
-        <text x="65" y="165" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">git push</text>
-        <!-- Arrow to GH Actions -->
-        <line x1="110" y1="155" x2="148" y2="155" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- GitHub Actions -->
-        <rect x="150" y="130" width="100" height="50" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="200" y="150" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">GitHub</text>
-        <text x="200" y="163" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">Actions</text>
-        <text x="200" y="176" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">CI/CD</text>
-        <!-- Arrow into cluster -->
-        <line x1="250" y1="155" x2="298" y2="155" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- GKE Cluster boundary -->
-        <rect x="300" y="20" width="460" height="300" rx="6" fill="none" stroke="#FCA311" stroke-width="1" stroke-dasharray="6 3"/>
-        <text x="310" y="38" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">2-Node GKE Cluster (us-east1)</text>
-        <!-- Web Service -->
-        <rect x="330" y="55" width="160" height="80" rx="4" fill="none" stroke="#4285F4" stroke-width="1.5"/>
-        <text x="410" y="78" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4285F4">Web Service</text>
-        <text x="410" y="93" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Flask :5000</text>
-        <text x="410" y="108" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">HPA: 1-5 replicas</text>
-        <text x="410" y="123" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">LoadBalancer</text>
-        <!-- Analytics Service -->
-        <rect x="530" y="55" width="180" height="80" rx="4" fill="none" stroke="#34A853" stroke-width="1.5"/>
-        <text x="620" y="78" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#34A853">Analytics Service</text>
-        <text x="620" y="93" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Flask :5004</text>
-        <text x="620" y="108" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">HPA: 1-3 replicas</text>
-        <text x="620" y="123" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">ClusterIP</text>
-        <!-- Auth Service -->
-        <rect x="330" y="165" width="155" height="55" rx="4" fill="none" stroke="#FBBC04" stroke-width="1.5"/>
-        <text x="408" y="186" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FBBC04">Auth Service</text>
-        <text x="408" y="200" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Node.js :5001</text>
-        <text x="408" y="213" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">ClusterIP (internal)</text>
-        <!-- MySQL StatefulSet -->
-        <rect x="330" y="250" width="150" height="55" rx="4" fill="none" stroke="#4479A1" stroke-width="1.5"/>
-        <ellipse cx="405" cy="260" rx="40" ry="8" fill="none" stroke="#4479A1" stroke-width="1"/>
-        <text x="405" y="283" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4479A1">MySQL</text>
-        <text x="405" y="296" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">StatefulSet + PVC</text>
-        <!-- MongoDB StatefulSet -->
-        <rect x="525" y="250" width="170" height="55" rx="4" fill="none" stroke="#47A248" stroke-width="1.5"/>
-        <ellipse cx="610" cy="260" rx="45" ry="8" fill="none" stroke="#47A248" stroke-width="1"/>
-        <text x="610" y="283" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#47A248">MongoDB</text>
-        <text x="610" y="296" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">StatefulSet + PVC</text>
-        <!-- Connecting arrows -->
-        <line x1="410" y1="135" x2="410" y2="163" stroke="#FCA311" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="410" y1="220" x2="410" y2="248" stroke="#FCA311" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="620" y1="135" x2="620" y2="248" stroke="#FCA311" stroke-width="1" marker-end="url(#arr)"/>
-        <!-- External traffic -->
-        <text x="22" y="100" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">External</text>
-        <text x="22" y="113" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Traffic</text>
-        <line x1="65" y1="116" x2="65" y2="128" stroke="#FCA311" stroke-width="1" marker-end="url(#arr)"/>
+      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GKE microservices architecture">
+        <defs><marker id="a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#FCA311"/></marker></defs>
+        <rect width="800" height="340" fill="#0B1929" rx="8"/>
+        <rect x="200" y="18" width="560" height="306" rx="6" fill="none" stroke="#FCA311" stroke-width="1.2" stroke-dasharray="6 3"/>
+        <text x="210" y="36" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">2-Node GKE Cluster (us-east1)</text>
+        <rect x="18" y="64" width="110" height="40" rx="4" fill="none" stroke="#FCA311" stroke-width="1"/>
+        <text x="73" y="82" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FCA311">GitHub</text>
+        <text x="73" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FCA311">Actions</text>
+        <line x1="128" y1="84" x2="198" y2="84" stroke="#FCA311" stroke-width="1.2" marker-end="url(#a)"/>
+        <rect x="220" y="52" width="150" height="64" rx="4" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+        <text x="295" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4285F4">Web Service</text>
+        <text x="295" y="91" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Flask :5000</text>
+        <rect x="228" y="55" width="30" height="12" rx="3" fill="#FCA311"/><text x="243" y="65" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#000">HPA</text>
+        <rect x="420" y="52" width="155" height="64" rx="4" fill="none" stroke="#34A853" stroke-width="1.5"/>
+        <text x="497" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#34A853">Analytics</text>
+        <text x="497" y="91" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Flask :5004</text>
+        <rect x="428" y="55" width="30" height="12" rx="3" fill="#FCA311"/><text x="443" y="65" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#000">HPA</text>
+        <rect x="620" y="52" width="120" height="64" rx="4" fill="none" stroke="#FBBC04" stroke-width="1.5"/>
+        <text x="680" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FBBC04">Auth Svc</text>
+        <text x="680" y="91" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Node :5001</text>
+        <rect x="18" y="148" width="110" height="40" rx="4" fill="rgba(252,163,17,0.15)" stroke="#FCA311" stroke-width="1.2"/>
+        <text x="73" y="173" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FCA311">Load Balancer</text>
+        <line x1="128" y1="168" x2="218" y2="116" stroke="#FCA311" stroke-width="1" marker-end="url(#a)"/>
+        <rect x="220" y="200" width="150" height="56" rx="4" fill="none" stroke="#4479A1" stroke-width="1.5"/>
+        <ellipse cx="295" cy="213" rx="40" ry="8" fill="none" stroke="#4479A1" stroke-width="1"/>
+        <text x="295" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4479A1">MySQL</text>
+        <text x="295" y="252" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">StatefulSet</text>
+        <rect x="420" y="200" width="155" height="56" rx="4" fill="none" stroke="#47A248" stroke-width="1.5"/>
+        <ellipse cx="497" cy="213" rx="45" ry="8" fill="none" stroke="#47A248" stroke-width="1"/>
+        <text x="497" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#47A248">MongoDB</text>
+        <text x="497" y="252" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">StatefulSet</text>
+        <line x1="295" y1="116" x2="295" y2="198" stroke="#FCA311" stroke-width="1" marker-end="url(#a)"/>
+        <line x1="497" y1="116" x2="497" y2="198" stroke="#FCA311" stroke-width="1" marker-end="url(#a)"/>
+        <line x1="370" y1="84" x2="418" y2="84" stroke="#FCA311" stroke-width="1" marker-end="url(#a)"/>
+        <line x1="575" y1="84" x2="618" y2="84" stroke="#FCA311" stroke-width="1" marker-end="url(#a)"/>
       </svg>
 
       {% elif project.diagram_type == 'ci_pipelines' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CI/CD dual pipeline architecture diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Developer (shared top) -->
-        <rect x="330" y="16" width="140" height="44" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="400" y="34" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#FCA311">Developer</text>
-        <text x="400" y="50" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">git push</text>
-        <!-- Left branch arrow (Jenkins) -->
-        <path d="M360 60 L200 105" stroke="#FCA311" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <!-- Right branch arrow (GitLab CI) -->
-        <path d="M440 60 L600 105" stroke="#FCA311" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <!-- ===== JENKINS COLUMN ===== -->
-        <text x="200" y="98" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#D33833" font-weight="bold">Jenkins</text>
-        <!-- Jenkins server -->
-        <rect x="120" y="108" width="160" height="44" rx="4" fill="none" stroke="#D33833" stroke-width="1.5"/>
-        <text x="200" y="128" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#D33833">Jenkins Server</text>
-        <text x="200" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Declarative Pipeline</text>
-        <!-- Jenkins stages -->
-        <line x1="200" y1="152" x2="200" y2="170" stroke="#D33833" stroke-width="1" marker-end="url(#arr)"/>
-        {% set j_stages = [("Checkout","SCM"),("Install","Dependencies"),("Test","Automated"),("Deploy","Artifact")] %}
-        {% for stage, sub in j_stages %}
-        <rect x="130" y="{{ 172 + loop.index0 * 38 }}" width="140" height="30" rx="3" fill="none" stroke="#D33833" stroke-width="1"/>
-        <text x="200" y="{{ 185 + loop.index0 * 38 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#D33833">{{ stage }}</text>
-        <text x="200" y="{{ 196 + loop.index0 * 38 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">{{ sub }}</text>
-        {% if not loop.last %}
-        <line x1="200" y1="{{ 202 + loop.index0 * 38 }}" x2="200" y2="{{ 172 + loop.index * 38 }}" stroke="#D33833" stroke-width="1" marker-end="url(#arr)"/>
-        {% endif %}
+      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CI/CD pipelines architecture">
+        <defs><marker id="b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#FCA311"/></marker></defs>
+        <rect width="800" height="340" fill="#0B1929" rx="8"/>
+        <rect x="310" y="14" width="180" height="44" rx="4" fill="rgba(252,163,17,0.12)" stroke="#FCA311" stroke-width="1.5"/>
+        <text x="400" y="34" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#FCA311">Git Repository</text>
+        <text x="400" y="50" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">git push origin main</text>
+        <path d="M360 58 L200 96" stroke="#FCA311" stroke-width="1.2" fill="none" marker-end="url(#b)"/>
+        <path d="M440 58 L600 96" stroke="#FCA311" stroke-width="1.2" fill="none" marker-end="url(#b)"/>
+        <rect x="80" y="100" width="240" height="218" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(211,56,51,0.5)" stroke-width="1"/>
+        <text x="200" y="122" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#D33833">Jenkins</text>
+        <text x="200" y="136" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Declarative Pipeline</text>
+        {% for label, y in [('Checkout SCM',150),('Install Deps',185),('Run Tests',220),('Build Artifact',255),('Deploy',290)] %}
+        <rect x="104" y="{{ y }}" width="192" height="24" rx="3" fill="rgba(211,56,51,0.12)" stroke="rgba(211,56,51,0.35)" stroke-width="0.8"/>
+        <text x="200" y="{{ y+16 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#fff">{{ label }}</text>
         {% endfor %}
-        <!-- ===== GITLAB CI COLUMN ===== -->
-        <text x="600" y="98" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#FC6D26" font-weight="bold">GitLab CI</text>
-        <!-- GitLab runner -->
-        <rect x="520" y="108" width="160" height="44" rx="4" fill="none" stroke="#FC6D26" stroke-width="1.5"/>
-        <text x="600" y="128" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FC6D26">GitLab Runner</text>
-        <text x="600" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">.gitlab-ci.yml</text>
-        <!-- GitLab stages -->
-        <line x1="600" y1="152" x2="600" y2="170" stroke="#FC6D26" stroke-width="1" marker-end="url(#arr)"/>
-        {% set g_stages = [("Checkout","SCM"),("Install","Dependencies"),("Test","Automated"),("Deploy","Artifact")] %}
-        {% for stage, sub in g_stages %}
-        <rect x="530" y="{{ 172 + loop.index0 * 38 }}" width="140" height="30" rx="3" fill="none" stroke="#FC6D26" stroke-width="1"/>
-        <text x="600" y="{{ 185 + loop.index0 * 38 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FC6D26">{{ stage }}</text>
-        <text x="600" y="{{ 196 + loop.index0 * 38 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">{{ sub }}</text>
-        {% if not loop.last %}
-        <line x1="600" y1="{{ 202 + loop.index0 * 38 }}" x2="600" y2="{{ 172 + loop.index * 38 }}" stroke="#FC6D26" stroke-width="1" marker-end="url(#arr)"/>
-        {% endif %}
+        <rect x="480" y="100" width="240" height="218" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(252,109,38,0.5)" stroke-width="1"/>
+        <text x="600" y="122" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#FC6D26">GitLab CI</text>
+        <text x="600" y="136" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">.gitlab-ci.yml</text>
+        {% for label, y in [('Checkout SCM',150),('Install Deps',185),('Run Tests',220),('Build Artifact',255),('Deploy',290)] %}
+        <rect x="504" y="{{ y }}" width="192" height="24" rx="3" fill="rgba(252,109,38,0.12)" stroke="rgba(252,109,38,0.35)" stroke-width="0.8"/>
+        <text x="600" y="{{ y+16 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#fff">{{ label }}</text>
         {% endfor %}
-        <!-- Same goal label -->
-        <rect x="310" y="250" width="180" height="44" rx="4" fill="#FCA311" fill-opacity="0.1" stroke="#FCA311" stroke-width="1"/>
-        <text x="400" y="269" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FCA311">Same Goal:</text>
-        <text x="400" y="284" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FCA311">Continuous Delivery</text>
       </svg>
 
       {% elif project.diagram_type == 'nginx_lb' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nginx load balancer architecture diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Internet -->
-        <rect x="20" y="130" width="110" height="50" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="75" y="151" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">Internet</text>
-        <text x="75" y="166" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">HTTP Traffic</text>
-        <!-- Arrow -->
-        <line x1="130" y1="155" x2="178" y2="155" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- Nginx LB -->
-        <rect x="180" y="115" width="160" height="80" rx="4" fill="none" stroke="#009639" stroke-width="2"/>
-        <text x="260" y="140" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#009639">Nginx</text>
-        <text x="260" y="155" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#009639">Load Balancer</text>
-        <text x="260" y="170" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">Round Robin</text>
-        <text x="260" y="185" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">/documents endpoint</text>
-        <!-- Arrows to servers -->
-        <path d="M340 145 L438 95" stroke="#FCA311" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <path d="M340 165 L438 215" stroke="#FCA311" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <!-- DigitalOcean boundary -->
-        <rect x="440" y="30" width="320" height="280" rx="6" fill="none" stroke="#0080FF" stroke-width="1" stroke-dasharray="6 3"/>
-        <text x="450" y="50" font-family="JetBrains Mono,monospace" font-size="10" fill="#0080FF">DigitalOcean Droplets</text>
-        <!-- Server 1 -->
-        <rect x="460" y="58" width="160" height="80" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="540" y="82" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">Arch Linux</text>
-        <text x="540" y="97" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">Server 1</text>
-        <text x="540" y="112" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Web + File Server</text>
-        <text x="540" y="127" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Nginx :80</text>
-        <!-- File storage icon S1 -->
-        <rect x="500" y="148" width="80" height="28" rx="2" fill="none" stroke="#aaa" stroke-width="1"/>
-        <text x="540" y="162" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">File Storage</text>
-        <text x="540" y="172" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#aaa">/documents</text>
-        <!-- Server 2 -->
-        <rect x="460" y="192" width="160" height="80" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="540" y="216" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">Arch Linux</text>
-        <text x="540" y="231" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">Server 2</text>
-        <text x="540" y="246" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Web + File Server</text>
-        <text x="540" y="261" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Nginx :80</text>
-        <!-- File storage icon S2 -->
-        <rect x="500" y="278" width="80" height="28" rx="2" fill="none" stroke="#aaa" stroke-width="1"/>
-        <text x="540" y="292" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">File Storage</text>
-        <text x="540" y="302" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#aaa">/documents</text>
+      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nginx load balancer architecture">
+        <defs><marker id="c" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#FCA311"/></marker></defs>
+        <rect width="800" height="340" fill="#0B1929" rx="8"/>
+        <rect x="310" y="12" width="180" height="40" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <text x="400" y="37" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#ccc">Internet Traffic</text>
+        <line x1="400" y1="52" x2="400" y2="80" stroke="#FCA311" stroke-width="1.5" marker-end="url(#c)"/>
+        <rect x="270" y="82" width="260" height="60" rx="4" fill="rgba(252,163,17,0.12)" stroke="#FCA311" stroke-width="2"/>
+        <text x="400" y="108" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#FCA311">Nginx Load Balancer</text>
+        <text x="400" y="125" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FCA311">Round Robin · /documents endpoint</text>
+        <rect x="60" y="160" width="680" height="162" rx="6" fill="none" stroke="#0080FF" stroke-width="1" stroke-dasharray="5 3"/>
+        <text x="72" y="178" font-family="JetBrains Mono,monospace" font-size="10" fill="#0080FF">DigitalOcean Droplets</text>
+        <path d="M340 142 L200 185" stroke="#FCA311" stroke-width="1.2" fill="none" marker-end="url(#c)"/>
+        <path d="M460 142 L600 185" stroke="#FCA311" stroke-width="1.2" fill="none" marker-end="url(#c)"/>
+        <rect x="78" y="188" width="240" height="116" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <text x="198" y="216" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#fff">Arch Linux Server 1</text>
+        <text x="198" y="234" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Nginx :80</text>
+        <rect x="118" y="252" width="160" height="32" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <text x="198" y="272" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">/var/lib/webgen/documents</text>
+        <rect x="482" y="188" width="240" height="116" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <text x="602" y="216" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#fff">Arch Linux Server 2</text>
+        <text x="602" y="234" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Nginx :80</text>
+        <rect x="522" y="252" width="160" height="32" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <text x="602" y="272" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">/var/lib/webgen/documents</text>
       </svg>
 
       {% elif project.diagram_type == 'drugs2door' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drugs2Door application architecture diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Patient user -->
-        <rect x="60" y="20" width="130" height="60" rx="4" fill="none" stroke="#4285F4" stroke-width="1.5"/>
-        <text x="125" y="44" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4285F4">Patient User</text>
-        <text x="125" y="58" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Upload Prescription</text>
-        <text x="125" y="70" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Request Refill</text>
-        <!-- Pharmacist user -->
-        <rect x="610" y="20" width="130" height="60" rx="4" fill="none" stroke="#34A853" stroke-width="1.5"/>
-        <text x="675" y="44" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#34A853">Pharmacist</text>
-        <text x="675" y="58" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Process Order</text>
-        <text x="675" y="70" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Dispatch Delivery</text>
-        <!-- Arrows to Flask -->
-        <path d="M160 80 L310 130" stroke="#FCA311" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <path d="M640 80 L490 130" stroke="#FCA311" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-        <!-- Flask app -->
-        <rect x="280" y="132" width="240" height="60" rx="4" fill="none" stroke="#FCA311" stroke-width="2"/>
-        <text x="400" y="155" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#FCA311">Flask Application</text>
-        <text x="400" y="172" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Jinja2 Templates + Role-Based Routing</text>
-        <text x="400" y="185" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Bootstrap UI</text>
-        <!-- Arrow to SQLAlchemy -->
-        <line x1="400" y1="192" x2="400" y2="230" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- SQLAlchemy ORM -->
-        <rect x="300" y="232" width="200" height="44" rx="4" fill="none" stroke="#FBBC04" stroke-width="1.5"/>
-        <text x="400" y="251" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FBBC04">SQLAlchemy ORM</text>
-        <text x="400" y="268" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Data Persistence Layer</text>
-        <!-- Arrow to DB -->
-        <line x1="400" y1="276" x2="400" y2="298" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- Database -->
-        <rect x="310" y="300" width="180" height="34" rx="4" fill="none" stroke="#4479A1" stroke-width="1.5"/>
-        <text x="400" y="321" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4479A1">Database</text>
-      </svg>
-
-      {% elif project.diagram_type == 'k8s_lab' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kubernetes lab minikube cluster diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- kubectl -->
-        <rect x="20" y="130" width="110" height="50" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="75" y="152" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">kubectl</text>
-        <text x="75" y="167" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">CLI Commands</text>
-        <line x1="130" y1="155" x2="178" y2="155" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- minikube cluster boundary -->
-        <rect x="180" y="20" width="580" height="280" rx="6" fill="none" stroke="#326CE5" stroke-width="1" stroke-dasharray="6 3"/>
-        <text x="192" y="38" font-family="JetBrains Mono,monospace" font-size="10" fill="#326CE5">minikube Cluster (Local Development)</text>
-        <!-- Deployment -->
-        <rect x="200" y="55" width="200" height="60" rx="4" fill="none" stroke="#326CE5" stroke-width="1.5"/>
-        <text x="300" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#326CE5">Deployment</text>
-        <text x="300" y="92" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">ReplicaSet managed</text>
-        <text x="300" y="107" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">Rolling Updates</text>
-        <!-- Pods -->
-        {% for i in [0,1,2] %}
-        <circle cx="{{ 220 + i * 65 }}" cy="165" r="25" fill="none" stroke="#326CE5" stroke-width="1.5"/>
-        <text x="{{ 220 + i * 65 }}" y="162" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#326CE5">Pod</text>
-        <text x="{{ 220 + i * 65 }}" y="174" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#aaa">app:v1</text>
-        {% endfor %}
-        <line x1="300" y1="115" x2="225" y2="140" stroke="#326CE5" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="300" y1="115" x2="300" y2="140" stroke="#326CE5" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="300" y1="115" x2="350" y2="140" stroke="#326CE5" stroke-width="1" marker-end="url(#arr)"/>
-        <!-- Service -->
-        <rect x="220" y="200" width="160" height="44" rx="4" fill="none" stroke="#FBBC04" stroke-width="1.5"/>
-        <text x="300" y="220" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FBBC04">Service</text>
-        <text x="300" y="236" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">ClusterIP / NodePort</text>
-        <!-- ConfigMap -->
-        <rect x="450" y="55" width="140" height="44" rx="4" fill="none" stroke="#EA4335" stroke-width="1.5"/>
-        <text x="520" y="74" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#EA4335">ConfigMap</text>
-        <text x="520" y="90" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">App Configuration</text>
-        <!-- Secret -->
-        <rect x="450" y="120" width="140" height="44" rx="4" fill="none" stroke="#FF9900" stroke-width="1.5"/>
-        <text x="520" y="139" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">Secret</text>
-        <text x="520" y="155" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Sensitive Data</text>
-        <!-- Connections -->
-        <line x1="400" y1="165" x2="448" y2="77" stroke="#aaa" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#arr)"/>
-        <line x1="400" y1="165" x2="448" y2="142" stroke="#aaa" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#arr)"/>
-      </svg>
-
-      {% elif project.diagram_type == 'terraform_aws' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terraform AWS provisioning diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Developer -->
-        <rect x="20" y="130" width="120" height="50" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="80" y="150" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">Developer</text>
-        <text x="80" y="165" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">terraform apply</text>
-        <line x1="140" y1="155" x2="178" y2="155" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- Terraform Core -->
-        <rect x="180" y="110" width="160" height="90" rx="4" fill="none" stroke="#7B42BC" stroke-width="2"/>
-        <text x="260" y="135" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#7B42BC">Terraform</text>
-        <text x="260" y="150" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">State Management</text>
-        <rect x="196" y="158" width="128" height="22" rx="2" fill="none" stroke="#7B42BC" stroke-width="1" stroke-dasharray="3 2"/>
-        <text x="260" y="173" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#7B42BC">terraform.tfstate</text>
-        <line x1="340" y1="155" x2="378" y2="155" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- AWS Provider -->
-        <rect x="380" y="125" width="120" height="60" rx="4" fill="none" stroke="#FF9900" stroke-width="1.5"/>
-        <text x="440" y="148" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">AWS Provider</text>
-        <text x="440" y="163" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Terraform Plugin</text>
-        <text x="440" y="178" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">API Calls</text>
-        <!-- Resources -->
-        <line x1="500" y1="130" x2="548" y2="80" stroke="#FF9900" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="500" y1="145" x2="548" y2="145" stroke="#FF9900" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="500" y1="160" x2="548" y2="210" stroke="#FF9900" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="500" y1="175" x2="548" y2="270" stroke="#FF9900" stroke-width="1" marker-end="url(#arr)"/>
-        {% set aws_res = [("EC2 Instance",60),("Security Group",128),("VPC + Subnets",192),("Internet Gateway",252)] %}
-        {% for label, y in aws_res %}
-        <rect x="550" y="{{ y }}" width="150" height="36" rx="4" fill="none" stroke="#FF9900" stroke-width="1"/>
-        <text x="625" y="{{ y + 22 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">{{ label }}</text>
-        {% endfor %}
-      </svg>
-
-      {% elif project.diagram_type == 'packer_terraform' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Packer and Terraform immutable infrastructure diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Build Phase -->
-        <rect x="20" y="20" width="350" height="140" rx="6" fill="none" stroke="#02A8EF" stroke-width="1" stroke-dasharray="6 3"/>
-        <text x="30" y="38" font-family="JetBrains Mono,monospace" font-size="10" fill="#02A8EF">Build Phase</text>
-        <rect x="40" y="50" width="140" height="90" rx="4" fill="none" stroke="#02A8EF" stroke-width="1.5"/>
-        <text x="110" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#02A8EF">Packer</text>
-        <text x="110" y="92" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">HCL Build Template</text>
-        <text x="110" y="107" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Install Software</text>
-        <text x="110" y="122" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Configure System</text>
-        <line x1="180" y1="95" x2="218" y2="95" stroke="#02A8EF" stroke-width="1.5" marker-end="url(#arr)"/>
-        <rect x="220" y="60" width="130" height="70" rx="4" fill="none" stroke="#FF9900" stroke-width="1.5"/>
-        <text x="285" y="82" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">Custom AMI</text>
-        <text x="285" y="97" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Stored in AWS</text>
-        <text x="285" y="112" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">ami-XXXXXXXX</text>
-        <!-- Deploy Phase -->
-        <rect x="430" y="20" width="340" height="140" rx="6" fill="none" stroke="#7B42BC" stroke-width="1" stroke-dasharray="6 3"/>
-        <text x="440" y="38" font-family="JetBrains Mono,monospace" font-size="10" fill="#7B42BC">Deploy Phase</text>
-        <rect x="450" y="50" width="140" height="90" rx="4" fill="none" stroke="#7B42BC" stroke-width="1.5"/>
-        <text x="520" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#7B42BC">Terraform</text>
-        <text x="520" y="92" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">References AMI ID</text>
-        <text x="520" y="107" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">data "aws_ami"</text>
-        <text x="520" y="122" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">terraform apply</text>
-        <line x1="590" y1="95" x2="628" y2="95" stroke="#7B42BC" stroke-width="1.5" marker-end="url(#arr)"/>
-        <rect x="630" y="55" width="120" height="70" rx="4" fill="none" stroke="#FF9900" stroke-width="1.5"/>
-        <text x="690" y="78" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">EC2 Instance</text>
-        <text x="690" y="94" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Pre-configured</text>
-        <text x="690" y="109" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">No user-data</text>
-        <!-- Phase connector -->
-        <line x1="370" y1="95" x2="448" y2="95" stroke="#FCA311" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#arr)"/>
-        <!-- Bottom labels -->
-        <text x="400" y="215" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#FCA311">Immutable Infrastructure Pattern</text>
-        <text x="400" y="235" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Build once, deploy consistently, never mutate in place</text>
-        <rect x="120" y="260" width="220" height="55" rx="4" fill="none" stroke="#02A8EF" stroke-width="1"/>
-        <text x="230" y="282" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#02A8EF">Packer: Image Factory</text>
-        <text x="230" y="298" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Consistent, versioned AMIs</text>
-        <rect x="460" y="260" width="220" height="55" rx="4" fill="none" stroke="#7B42BC" stroke-width="1"/>
-        <text x="570" y="282" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#7B42BC">Terraform: Orchestration</text>
-        <text x="570" y="298" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Declarative deployment</text>
-      </svg>
-
-      {% elif project.diagram_type == 'aws_networking' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AWS multi-tier network architecture diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Internet -->
-        <rect x="320" y="10" width="160" height="36" rx="4" fill="none" stroke="#aaa" stroke-width="1.5"/>
-        <text x="400" y="33" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#aaa">Internet</text>
-        <!-- Internet Gateway -->
-        <rect x="340" y="60" width="120" height="36" rx="4" fill="none" stroke="#FF9900" stroke-width="1.5"/>
-        <text x="400" y="74" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FF9900">Internet Gateway</text>
-        <text x="400" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">igw-xxxxxxxx</text>
-        <line x1="400" y1="46" x2="400" y2="58" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- VPC boundary -->
-        <rect x="30" y="110" width="740" height="220" rx="6" fill="none" stroke="#FF9900" stroke-width="1" stroke-dasharray="6 3"/>
-        <text x="40" y="128" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">VPC: 10.0.0.0/16</text>
-        <line x1="400" y1="96" x2="400" y2="108" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- Public Subnet -->
-        <rect x="50" y="138" width="300" height="170" rx="4" fill="none" stroke="#34A853" stroke-width="1.5"/>
-        <text x="60" y="155" font-family="JetBrains Mono,monospace" font-size="9" fill="#34A853">Public Subnet: 10.0.1.0/24</text>
-        <text x="60" y="168" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Route: 0.0.0.0/0 -&gt; IGW</text>
-        <!-- NAT Gateway in public subnet -->
-        <rect x="80" y="178" width="120" height="44" rx="3" fill="none" stroke="#FF9900" stroke-width="1.5"/>
-        <text x="140" y="198" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FF9900">NAT Gateway</text>
-        <text x="140" y="212" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Elastic IP</text>
-        <!-- EC2 in public subnet -->
-        <rect x="230" y="178" width="100" height="44" rx="3" fill="none" stroke="#4285F4" stroke-width="1.5"/>
-        <text x="280" y="198" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#4285F4">EC2 Instance</text>
-        <text x="280" y="212" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Public IP</text>
-        <!-- Security group label -->
-        <rect x="70" y="238" width="260" height="26" rx="2" fill="none" stroke="#FCA311" stroke-width="1" stroke-dasharray="3 2"/>
-        <text x="200" y="255" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">Security Group + NACL</text>
-        <!-- Arrow to private subnet -->
-        <line x1="200" y1="222" x2="200" y2="278" stroke="#FCA311" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="352" y1="220" x2="448" y2="220" stroke="#FCA311" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#arr)"/>
-        <!-- Private Subnet -->
-        <rect x="450" y="138" width="300" height="170" rx="4" fill="none" stroke="#EA4335" stroke-width="1.5"/>
-        <text x="460" y="155" font-family="JetBrains Mono,monospace" font-size="9" fill="#EA4335">Private Subnet: 10.0.2.0/24</text>
-        <text x="460" y="168" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Route: 0.0.0.0/0 -&gt; NAT GW</text>
-        <!-- EC2 in private subnet -->
-        <rect x="580" y="178" width="100" height="44" rx="3" fill="none" stroke="#4285F4" stroke-width="1.5"/>
-        <text x="630" y="198" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#4285F4">EC2 Instance</text>
-        <text x="630" y="212" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Private IP only</text>
-        <rect x="470" y="238" width="260" height="26" rx="2" fill="none" stroke="#EA4335" stroke-width="1" stroke-dasharray="3 2"/>
-        <text x="600" y="255" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#EA4335">Security Group + NACL</text>
-      </svg>
-
-      {% elif project.diagram_type == 'ansible' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ansible configuration management diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Inventory File -->
-        <rect x="20" y="60" width="140" height="50" rx="4" fill="none" stroke="#aaa" stroke-width="1.5"/>
-        <text x="90" y="80" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#aaa">Inventory File</text>
-        <text x="90" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Host Groups</text>
-        <!-- Playbook -->
-        <rect x="20" y="190" width="140" height="50" rx="4" fill="none" stroke="#aaa" stroke-width="1.5"/>
-        <text x="90" y="210" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#aaa">Playbook YAML</text>
-        <text x="90" y="226" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Tasks + Roles</text>
-        <!-- Ansible Control Node -->
-        <rect x="230" y="110" width="200" height="120" rx="4" fill="none" stroke="#EE0000" stroke-width="2"/>
-        <text x="330" y="140" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#EE0000">Ansible</text>
-        <text x="330" y="158" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Control Node</text>
-        <rect x="250" y="168" width="160" height="22" rx="2" fill="none" stroke="#EE0000" stroke-width="1" stroke-dasharray="3 2"/>
-        <text x="330" y="183" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">Idempotent | Agentless</text>
-        <text x="330" y="222" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">SSH-based push model</text>
-        <!-- Arrows from inputs to ansible -->
-        <line x1="160" y1="85" x2="228" y2="155" stroke="#aaa" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="160" y1="215" x2="228" y2="185" stroke="#aaa" stroke-width="1" marker-end="url(#arr)"/>
-        <!-- Managed hosts -->
-        {% for i, label in [(0,"Managed Host 1"),(1,"Managed Host 2"),(2,"Managed Host 3")] %}
-        <rect x="510" y="{{ 60 + i * 90 }}" width="160" height="60" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="590" y="{{ 85 + i * 90 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">{{ label }}</text>
-        <text x="590" y="{{ 100 + i * 90 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Nginx / Apache</text>
-        <text x="590" y="{{ 113 + i * 90 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#aaa">Linux</text>
-        <path d="M430 {{ 155 + (i-1)*20 }} L508 {{ 90 + i * 90 }}" stroke="#FCA311" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-        {% endfor %}
-        <!-- SSH label -->
-        <text x="462" y="175" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa" transform="rotate(-20, 462, 175)">SSH</text>
-      </svg>
-
-      {% elif project.diagram_type == 'terraform_modules' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terraform modules and remote state diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Root config -->
-        <rect x="300" y="130" width="200" height="80" rx="4" fill="none" stroke="#7B42BC" stroke-width="2"/>
-        <text x="400" y="158" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#7B42BC">Root Configuration</text>
-        <text x="400" y="175" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">main.tf / variables.tf</text>
-        <text x="400" y="190" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Calls all modules</text>
-        <text x="400" y="204" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">module "vpc" { source = "./vpc" }</text>
-        <!-- Modules -->
-        {% set mods = [("VPC Module",80,50),("EC2 Module",660,50),("Security Group Module",360,10)] %}
-        {% for label, mx, my in mods %}
-        <rect x="{{ mx }}" y="{{ my }}" width="160" height="55" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5"/>
-        <text x="{{ mx+80 }}" y="{{ my+22 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">{{ label }}</text>
-        <text x="{{ mx+80 }}" y="{{ my+38 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Reusable</text>
-        <text x="{{ mx+80 }}" y="{{ my+50 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Input/Output vars</text>
-        {% endfor %}
-        <!-- Root to modules arrows -->
-        <line x1="360" y1="130" x2="210" y2="105" stroke="#7B42BC" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="400" y1="130" x2="440" y2="65" stroke="#7B42BC" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="440" y1="130" x2="690" y2="105" stroke="#7B42BC" stroke-width="1" marker-end="url(#arr)"/>
-        <!-- Remote State -->
-        <rect x="300" y="255" width="200" height="70" rx="4" fill="none" stroke="#FF9900" stroke-width="1.5"/>
-        <text x="400" y="278" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">S3 Remote State</text>
-        <text x="400" y="293" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">s3://bucket/terraform.tfstate</text>
-        <text x="400" y="307" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">State Locking Enabled</text>
-        <text x="400" y="320" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">DynamoDB Table</text>
-        <line x1="400" y1="210" x2="400" y2="253" stroke="#FF9900" stroke-width="1" marker-end="url(#arr)"/>
-        <!-- DynamoDB -->
-        <rect x="560" y="272" width="140" height="44" rx="4" fill="none" stroke="#4479A1" stroke-width="1.5"/>
-        <text x="630" y="292" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4479A1">DynamoDB</text>
-        <text x="630" y="308" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Lock: LockID</text>
-        <line x1="500" y1="294" x2="558" y2="294" stroke="#4479A1" stroke-width="1" marker-end="url(#arr)"/>
-      </svg>
-
-      {% elif project.diagram_type == 'aws_asg' %}
-      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AWS Auto Scaling Group and ALB diagram">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FCA311"/></marker>
-        </defs>
-        <rect width="800" height="340" fill="#0D1B2A" rx="8"/>
-        <!-- Internet -->
-        <rect x="20" y="130" width="100" height="50" rx="4" fill="none" stroke="#aaa" stroke-width="1.5"/>
-        <text x="70" y="155" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#aaa">Internet</text>
-        <line x1="120" y1="155" x2="158" y2="155" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- ALB -->
-        <rect x="160" y="115" width="150" height="80" rx="4" fill="none" stroke="#FF9900" stroke-width="2"/>
-        <text x="235" y="145" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">Application</text>
-        <text x="235" y="160" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">Load Balancer</text>
-        <text x="235" y="175" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Health Checks</text>
-        <text x="235" y="188" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Target Group</text>
-        <line x1="310" y1="155" x2="348" y2="155" stroke="#FCA311" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- ASG boundary -->
-        <rect x="350" y="40" width="400" height="260" rx="6" fill="none" stroke="#FCA311" stroke-width="1" stroke-dasharray="6 3"/>
-        <text x="360" y="58" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">Auto Scaling Group</text>
-        <text x="360" y="72" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Min: 1 / Desired: 2 / Max: 4</text>
-        <!-- EC2 instances -->
-        <rect x="370" y="90" width="130" height="80" rx="4" fill="none" stroke="#4285F4" stroke-width="1.5"/>
-        <text x="435" y="118" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4285F4">EC2 Instance</text>
-        <text x="435" y="133" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Launch Template</text>
-        <text x="435" y="148" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">Healthy</text>
-        <text x="435" y="163" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#aaa">t3.micro</text>
-        <rect x="530" y="90" width="130" height="80" rx="4" fill="none" stroke="#4285F4" stroke-width="1.5"/>
-        <text x="595" y="118" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4285F4">EC2 Instance</text>
-        <text x="595" y="133" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Launch Template</text>
-        <text x="595" y="148" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">Healthy</text>
-        <!-- Scale out indicator -->
-        <rect x="450" y="200" width="130" height="55" rx="4" fill="none" stroke="#FCA311" stroke-width="1.5" stroke-dasharray="4 2"/>
-        <text x="515" y="222" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FCA311">+ New Instance</text>
-        <text x="515" y="238" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Scale Out</text>
-        <text x="515" y="249" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Triggered</text>
-        <!-- CloudWatch -->
-        <rect x="610" y="200" width="130" height="80" rx="4" fill="none" stroke="#FF9900" stroke-width="1.5"/>
-        <text x="675" y="225" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#FF9900">CloudWatch</text>
-        <text x="675" y="241" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">CPU Alarm</text>
-        <text x="675" y="257" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#FCA311">Scale Out: &gt;70%</text>
-        <text x="675" y="272" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Scale In: &lt;30%</text>
-        <line x1="610" y1="240" x2="582" y2="230" stroke="#FF9900" stroke-width="1" marker-end="url(#arr)"/>
+      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drugs2Door application architecture">
+        <defs><marker id="d" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#FCA311"/></marker></defs>
+        <rect width="800" height="340" fill="#0B1929" rx="8"/>
+        <circle cx="90" cy="80" r="30" fill="rgba(66,133,244,0.12)" stroke="#4285F4" stroke-width="1.5"/>
+        <text x="90" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#4285F4">Patient</text>
+        <text x="90" y="90" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">User</text>
+        <line x1="120" y1="80" x2="210" y2="130" stroke="#FCA311" stroke-width="1" marker-end="url(#d)"/>
+        <circle cx="710" cy="80" r="30" fill="rgba(52,168,83,0.12)" stroke="#34A853" stroke-width="1.5"/>
+        <text x="710" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#34A853">Pharmacist</text>
+        <text x="710" y="90" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">User</text>
+        <line x1="680" y1="80" x2="590" y2="130" stroke="#FCA311" stroke-width="1" marker-end="url(#d)"/>
+        <rect x="212" y="112" width="376" height="80" rx="5" fill="rgba(252,163,17,0.1)" stroke="#FCA311" stroke-width="1.8"/>
+        <text x="400" y="146" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" fill="#FCA311">Flask Application</text>
+        <text x="400" y="164" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Python · Jinja2 Templates · Role-Based Routing</text>
+        <text x="400" y="181" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#aaa">Bootstrap UI · File Upload · Session Management</text>
+        <rect x="300" y="218" width="200" height="44" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="400" y="236" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#ccc">SQLAlchemy ORM</text>
+        <text x="400" y="252" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#888">Data Persistence Layer</text>
+        <line x1="400" y1="192" x2="400" y2="216" stroke="#FCA311" stroke-width="1" marker-end="url(#d)"/>
+        <rect x="310" y="282" width="180" height="44" rx="4" fill="none" stroke="#4479A1" stroke-width="1.5"/>
+        <ellipse cx="400" cy="292" rx="48" ry="10" fill="none" stroke="#4479A1" stroke-width="1"/>
+        <text x="400" y="314" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#4479A1">Database (SQLite/SQL)</text>
+        <line x1="400" y1="262" x2="400" y2="280" stroke="#FCA311" stroke-width="1" marker-end="url(#d)"/>
       </svg>
 
       {% else %}
-      <div class="diagram-placeholder">
-        <p data-i18n="project.diagram.caption">Architecture diagram</p>
-      </div>
+      <svg viewBox="0 0 800 340" width="100%" height="auto" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Infrastructure lab architecture">
+        <defs><marker id="e" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#FCA311"/></marker></defs>
+        <rect width="800" height="340" fill="#0B1929" rx="8"/>
+        <rect x="30" y="130" width="130" height="60" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="95" y="156" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#ccc">Developer</text>
+        <text x="95" y="173" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#888">terraform apply</text>
+        <line x1="160" y1="160" x2="218" y2="160" stroke="#FCA311" stroke-width="1.5" marker-end="url(#e)"/>
+        <rect x="220" y="120" width="160" height="80" rx="4" fill="rgba(123,66,188,0.12)" stroke="#7B42BC" stroke-width="1.5"/>
+        <text x="300" y="154" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#7B42BC">Terraform</text>
+        <text x="300" y="170" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">State Management</text>
+        <text x="300" y="184" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#aaa">Provider API Calls</text>
+        <line x1="380" y1="160" x2="438" y2="160" stroke="#FCA311" stroke-width="1.5" marker-end="url(#e)"/>
+        <rect x="440" y="100" width="140" height="40" rx="4" fill="rgba(255,153,0,0.12)" stroke="#FF9900" stroke-width="1.5"/>
+        <text x="510" y="125" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#FF9900">AWS Cloud</text>
+        <line x1="510" y1="140" x2="510" y2="176" stroke="#FF9900" stroke-width="1" marker-end="url(#e)"/>
+        {% for label, x, y in [('EC2',440,180),('VPC',570,180),('S3',440,245),('DynamoDB',570,245)] %}
+        <rect x="{{ x }}" y="{{ y }}" width="115" height="36" rx="3" fill="rgba(255,153,0,0.08)" stroke="#FF9900" stroke-width="0.8"/>
+        <text x="{{ x+57 }}" y="{{ y+23 }}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#FF9900">{{ label }}</text>
+        {% endfor %}
+      </svg>
       {% endif %}
 
-      <p class="diagram-caption" data-i18n="project.diagram.caption">Architecture Overview</p>
     </div>
-    <!-- /diagram-container -->
+    <p class="diagram-caption" data-i18n="project.diagram.caption">System architecture diagram</p>
 
     <!-- Project header -->
-    <div class="detail-header">
-      <span class="project-badge project-badge-lg">{{ project.type }}</span>
-      <h1 class="detail-title">{{ project.title }}</h1>
-      <div class="detail-tech-stack">
-        {% for tech in project.technologies %}
-        <span class="tech-pill">{{ tech }}</span>
-        {% endfor %}
-      </div>
-      <div class="detail-links">
-        {% if project.github_url %}
-        <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-gold" aria-label="View on GitHub">
-          <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" style="margin-right:6px;vertical-align:middle" aria-hidden="true"><path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 10 4.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/></svg>
-          <span data-i18n="projects.github">GitHub</span>
-        </a>
-        {% endif %}
-        {% if project.demo_url %}
-        <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="projects.live_demo">Live Demo</a>
-        {% endif %}
-      </div>
+    <span class="detail-badge proj-type">{{ project.type }}</span>
+    <h1 class="detail-title proj-title">{{ project.title }}</h1>
+
+    <!-- Links -->
+    <div class="detail-links">
+      {% if project.github_url %}
+      <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm">
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 10 4.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/></svg>
+        <span data-i18n="project.github">GitHub</span>
+      </a>
+      {% endif %}
+      {% if project.demo_url %}
+      <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" data-i18n="project.demo">Live Demo</a>
+      {% endif %}
+      {% if project.youtube_url %}
+      <a href="{{ project.youtube_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm" data-i18n="project.video">Watch Demo</a>
+      {% endif %}
     </div>
 
-    <!-- Accordion sections -->
+    <!-- Technologies -->
+    <div class="tech-pills" style="margin-bottom:32px">
+      {% for tech in project.technologies %}
+      <span class="tech-pill">{{ tech }}</span>
+      {% endfor %}
+    </div>
+
+    <!-- Accordion — each body has a unique data-field attribute -->
     <div class="accordion">
-
-      <div class="accordion-item accordion-open">
-        <button class="accordion-header" aria-expanded="true">
-          <span data-i18n="project.overview">Overview</span>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span data-i18n="project.overview.title">Overview</span>
           <svg class="accordion-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="accordion-body">
-          <p>{{ project.full_description }}</p>
-        </div>
+        <div class="accordion-body" data-field="full_description" hidden>{{ project.full_description }}</div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-header" aria-expanded="false">
-          <span data-i18n="project.problem">Problem Statement</span>
+          <span data-i18n="project.problem.title">The Problem</span>
           <svg class="accordion-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="accordion-body" hidden>
-          <p>{{ project.problem }}</p>
-        </div>
+        <div class="accordion-body" data-field="problem" hidden>{{ project.problem }}</div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-header" aria-expanded="false">
-          <span data-i18n="project.solution">Solution Approach</span>
+          <span data-i18n="project.solution.title">The Solution</span>
           <svg class="accordion-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="accordion-body" hidden>
-          <p>{{ project.solution }}</p>
-        </div>
+        <div class="accordion-body" data-field="solution" hidden>{{ project.solution }}</div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-header" aria-expanded="false">
-          <span data-i18n="project.challenges">Technical Challenges</span>
+          <span data-i18n="project.challenges.title">Key Challenges</span>
           <svg class="accordion-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="accordion-body" hidden>
-          <p>{{ project.challenges }}</p>
-        </div>
+        <div class="accordion-body" data-field="challenges" hidden>{{ project.challenges }}</div>
       </div>
 
       <div class="accordion-item">
         <button class="accordion-header" aria-expanded="false">
-          <span data-i18n="project.impact">Impact &amp; Results</span>
+          <span data-i18n="project.impact.title">Impact &amp; Results</span>
           <svg class="accordion-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="accordion-body" hidden>
-          <p>{{ project.impact }}</p>
-        </div>
+        <div class="accordion-body" data-field="impact" hidden>{{ project.impact }}</div>
       </div>
-
     </div>
 
     {% if project.youtube_url %}
-    <div class="video-wrap">
-      <h3 class="detail-subheading" data-i18n="project.video">Video Walkthrough</h3>
-      {% set yt_id = project.youtube_url.split('youtu.be/')[-1].split('?')[0] if 'youtu.be/' in project.youtube_url else project.youtube_url.split('v=')[-1].split('&')[0] %}
-      <div class="video-responsive">
-        <iframe
-          src="https://www.youtube.com/embed/{{ yt_id }}"
-          title="Video for {{ project.title }}"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+    <div class="video-section">
+      <h3 class="video-heading" data-i18n="project.video">Watch Demo</h3>
+      {% set yt = project.youtube_url %}
+      {% if 'youtu.be/' in yt %}{% set vid = yt.split('youtu.be/')[1].split('?')[0] %}
+      {% elif 'v=' in yt %}{% set vid = yt.split('v=')[1].split('&')[0] %}
+      {% else %}{% set vid = '' %}{% endif %}
+      {% if vid %}
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/{{ vid }}"
+                title="Demo video for {{ project.title }}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
       </div>
+      {% endif %}
     </div>
     {% endif %}
 
-    <a href="/#projects" class="back-link back-link-bottom">
+    <a href="/#projects" class="back-link" style="margin-top:36px">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
       <span data-i18n="project.back">Back to Projects</span>
     </a>
 
   </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-document.querySelectorAll('.accordion-header').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var item = btn.closest('.accordion-item');
-    var body = item.querySelector('.accordion-body');
-    var isOpen = !body.hidden;
-    document.querySelectorAll('.accordion-body').forEach(function(b) { b.hidden = true; });
-    document.querySelectorAll('.accordion-header').forEach(function(b) { b.setAttribute('aria-expanded','false'); });
-    document.querySelectorAll('.accordion-item').forEach(function(i) { i.classList.remove('accordion-open'); });
-    if (!isOpen) {
-      body.hidden = false;
-      btn.setAttribute('aria-expanded','true');
-      item.classList.add('accordion-open');
-    }
-  });
-});
-</script>
 {% endblock %}
