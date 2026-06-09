@@ -24,7 +24,7 @@ var translations = {
 
     /* About */
     'about.title': 'About Me',
-    'about.bio':   "I'm a BCIT Computer Information Technology graduate (CGPA 90/100, With Distinction) with hands-on experience in cloud infrastructure, IT systems administration, and DevOps. My co-op at York House School gave me real-world practice supporting 400+ users, managing 1,000+ devices, and leading infrastructure refreshes — while my academic projects pushed me into Kubernetes, Terraform, CI/CD, and beyond.",
+    'about.bio':   "I'm a BCIT Computer Information Technology graduate (CGPA 90/100, With Distinction) with hands-on experience in cloud infrastructure, IT systems administration, and DevOps. My experience at York House School gave me real-world practice supporting 400+ users, managing 1,000+ devices, and leading infrastructure refreshes — while my academic projects pushed me into Kubernetes, Terraform, CI/CD, and beyond.",
     'about.callout': 'Cloud Infrastructure Engineer with strong IT foundations',
     'about.exp1.title': 'Cloud Engineering',
     'about.exp1.desc':  'Kubernetes, Docker, Terraform, AWS, GCP — designing and provisioning scalable cloud infrastructure.',
