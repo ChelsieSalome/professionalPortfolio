@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chelsie Salome - Cloud Infrastructure Engineer. BCIT Computer Information Technology graduate specializing in Kubernetes, Terraform, CI/CD, and systems administration.">
+  <meta property="og:title" content="Chelsie Salome | Cloud Infrastructure Engineer">
+  <meta property="og:description" content="Portfolio of Chelsie Salome - Cloud Infrastructure Engineer specializing in Kubernetes, Terraform, CI/CD pipelines, and systems administration.">
+  <meta property="og:type" content="website">
+  <title>{% block title %}Chelsie Salome | Cloud Infrastructure Engineer{% endblock %}</title>
+  <!-- THEME FLASH PREVENTION: runs before CSS -->
+  <script>
+    (function(){try{var t=localStorage.getItem('portfolio-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}else{document.documentElement.setAttribute('data-theme','dark');}}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+  <!-- ===== DESKTOP NAV ===== -->
+  <nav class="nav-desktop" id="desktop-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="/#hero" class="nav-logo" aria-label="Chelsie Salome home">CS<span class="gold">.</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="/#hero"        class="nav-link" data-section="hero"        data-i18n="nav.home">Home</a></li>
+        <li><a href="/#about"       class="nav-link" data-section="about"       data-i18n="nav.about">About</a></li>
+        <li><a href="/#projects"    class="nav-link" data-section="projects"    data-i18n="nav.projects">Projects</a></li>
+        <li><a href="/#skills"      class="nav-link" data-section="skills"      data-i18n="nav.skills">Skills</a></li>
+        <li><a href="/#beyond-tech" class="nav-link" data-section="beyond-tech" data-i18n="nav.beyond">Beyond Tech</a></li>
+        <li><a href="/#contact"     class="nav-link" data-section="contact"     data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <div class="lang-toggle" role="group" aria-label="Language selection">
+          <button class="lang-btn active" id="lang-en" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
+          <button class="lang-btn" id="lang-fr" data-lang="fr" aria-label="Passer en francais" aria-pressed="false">FR</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MOBILE BOTTOM NAV ===== -->
+  <nav class="nav-mobile" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="/#hero"        class="mobile-nav-item" data-section="hero">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span data-i18n="nav.home">Home</span>
+    </a>
+    <a href="/#projects"    class="mobile-nav-item" data-section="projects">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span data-i18n="nav.projects">Projects</span>
+    </a>
+    <a href="/#skills"      class="mobile-nav-item" data-section="skills">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <span data-i18n="nav.skills">Skills</span>
+    </a>
+    <a href="/#beyond-tech" class="mobile-nav-item" data-section="beyond-tech">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      <span data-i18n="nav.beyond">Beyond</span>
+    </a>
+    <button class="mobile-nav-item mobile-theme-btn" id="mobile-theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span data-i18n="nav.theme">Theme</span>
+    </button>
+  </nav>
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="footer-name">Chelsie Salome</p>
+      <p class="footer-tagline" data-i18n="footer.tagline">Cloud Infrastructure Engineer</p>
+      <div class="footer-icons">
+        <a href="https://github.com/ChelsieSalome" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="GitHub profile">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 10 4.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/></svg>
+        </a>
+        <!-- TODO: Update the LinkedIn URL below to your actual profile URL -->
+        <a href="https://linkedin.com/in/chelsie-lele" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="LinkedIn profile">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.389 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.779 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 1 1-.003-3.096 1.548 1.548 0 0 1 .003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"/></svg>
+        </a>
+        <!-- TODO: Replace the email address below with your actual email address -->
+        <a href="mailto:lelewambochelsie17@gmail.com" class="footer-icon-link" aria-label="Send email">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h16c.6 0 1 .4 1 1v10c0 .6-.4 1-1 1H2c-.6 0-1-.4-1-1V5c0-.6.4-1 1-1z"/><polyline points="1,4 10,11 19,4"/></svg>
+        </a>
+      </div>
+      <p class="footer-copy">
+        <span>&copy;</span>
+        <span id="footer-year"></span>
+        Chelsie Salome &mdash;
+        <span data-i18n="footer.rights">All rights reserved.</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

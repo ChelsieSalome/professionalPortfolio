@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#0d1a2e"/>
+  <rect x="40" y="40" width="720" height="370" fill="none" stroke="#FCA311" stroke-width="2" stroke-dasharray="8 4" rx="8"/>
+  <text x="400" y="200" font-family="monospace" font-size="48" fill="#FCA311" text-anchor="middle" opacity="0.5">⬡</text>
+  <text x="400" y="265" font-family="monospace" font-size="18" fill="#E5E5E5" text-anchor="middle">Automation & Server Management</text>
+  <text x="400" y="295" font-family="monospace" font-size="12" fill="#9CA3AF" text-anchor="middle">Replace with a real screenshot</text>
+</svg>

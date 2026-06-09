@@ -1,0 +1,206 @@
+{% macro icon(name, size=40) %}
+{%- set n = name | lower | replace(' ', '_') | replace('.', '') | replace('-', '_') -%}
+{%- if n == 'kubernetes' or n == 'k8s' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Kubernetes">
+  <circle cx="20" cy="20" r="18" fill="#326CE5" opacity="0.15"/>
+  <circle cx="20" cy="20" r="18" fill="none" stroke="#326CE5" stroke-width="1.5"/>
+  <polygon points="20,5 23,14 32,14 25,19 28,28 20,23 12,28 15,19 8,14 17,14" fill="none" stroke="#326CE5" stroke-width="1.5" stroke-linejoin="round"/>
+  <circle cx="20" cy="20" r="3" fill="#326CE5"/>
+</svg>
+{%- elif n == 'docker' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Docker">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#2496ED" opacity="0.12"/>
+  <rect x="8" y="18" width="5" height="5" rx="1" fill="#2496ED"/>
+  <rect x="14" y="18" width="5" height="5" rx="1" fill="#2496ED"/>
+  <rect x="20" y="18" width="5" height="5" rx="1" fill="#2496ED"/>
+  <rect x="14" y="12" width="5" height="5" rx="1" fill="#2496ED"/>
+  <rect x="20" y="12" width="5" height="5" rx="1" fill="#2496ED"/>
+  <path d="M6 24 Q10 30 20 28 Q30 26 34 20" fill="none" stroke="#2496ED" stroke-width="1.5"/>
+</svg>
+{%- elif n == 'google_kubernetes_engine' or n == 'gke' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="GKE">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#4285F4" opacity="0.12"/>
+  <circle cx="20" cy="20" r="10" fill="none" stroke="#4285F4" stroke-width="1.5"/>
+  <circle cx="20" cy="20" r="4" fill="#4285F4"/>
+  <line x1="20" y1="10" x2="20" y2="14" stroke="#4285F4" stroke-width="1.5"/>
+  <line x1="20" y1="26" x2="20" y2="30" stroke="#4285F4" stroke-width="1.5"/>
+  <line x1="10" y1="20" x2="14" y2="20" stroke="#4285F4" stroke-width="1.5"/>
+  <line x1="26" y1="20" x2="30" y2="20" stroke="#4285F4" stroke-width="1.5"/>
+</svg>
+{%- elif n == 'minikube' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="minikube">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#326CE5" opacity="0.12"/>
+  <rect x="10" y="14" width="20" height="14" rx="3" fill="none" stroke="#326CE5" stroke-width="1.5"/>
+  <circle cx="20" cy="21" r="4" fill="#326CE5" opacity="0.6"/>
+  <line x1="16" y1="8" x2="12" y2="14" stroke="#326CE5" stroke-width="1"/>
+  <line x1="24" y1="8" x2="28" y2="14" stroke="#326CE5" stroke-width="1"/>
+</svg>
+{%- elif n == 'jenkins' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Jenkins">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#335061" opacity="0.15"/>
+  <circle cx="20" cy="16" r="8" fill="none" stroke="#D33833" stroke-width="1.5"/>
+  <circle cx="17" cy="14" r="1.5" fill="#D33833"/>
+  <circle cx="23" cy="14" r="1.5" fill="#D33833"/>
+  <path d="M16 19 Q20 22 24 19" fill="none" stroke="#D33833" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="14" y="26" width="12" height="8" rx="2" fill="none" stroke="#D33833" stroke-width="1.5"/>
+  <line x1="20" y1="24" x2="20" y2="26" stroke="#D33833" stroke-width="1.5"/>
+</svg>
+{%- elif n == 'gitlab_ci' or n == 'gitlab' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="GitLab CI">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#FC6D26" opacity="0.12"/>
+  <path d="M20 32 L6 18 L10 8 L14 18 L26 18 L30 8 L34 18 Z" fill="none" stroke="#FC6D26" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M14 18 L20 32 L26 18" fill="#FC6D26" opacity="0.25"/>
+</svg>
+{%- elif n == 'github_actions' or n == 'github' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="GitHub Actions">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#2B3137" opacity="0.15"/>
+  <path d="M20 4C11.16 4 4 11.16 4 20c0 7.08 4.59 13.08 10.96 15.2.8.15 1.09-.35 1.09-.77 0-.38-.01-1.38-.02-2.72-4.45.97-5.39-2.14-5.39-2.14-.73-1.85-1.78-2.34-1.78-2.34-1.45-.99.11-.97.11-.97 1.61.11 2.45 1.65 2.45 1.65 1.43 2.45 3.75 1.74 4.66 1.33.14-1.04.56-1.74 1.02-2.14-3.56-.4-7.3-1.78-7.3-7.93 0-1.75.62-3.18 1.64-4.3-.16-.41-.71-2.04.16-4.24 0 0 1.34-.43 4.4 1.64a15.3 15.3 0 0 1 4-.54c1.36.01 2.73.18 4 .54 3.05-2.07 4.39-1.64 4.39-1.64.87 2.2.32 3.83.16 4.24 1.02 1.12 1.63 2.55 1.63 4.3 0 6.16-3.75 7.52-7.32 7.92.58.5 1.09 1.48 1.09 2.99 0 2.15-.02 3.89-.02 4.41 0 .43.29.93 1.1.77C31.42 33.07 36 27.07 36 20c0-8.84-7.16-16-16-16z" fill="#2B3137"/>
+</svg>
+{%- elif n == 'terraform' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Terraform">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#7B42BC" opacity="0.12"/>
+  <polygon points="10,28 10,16 19,11 19,23" fill="#7B42BC" opacity="0.7"/>
+  <polygon points="21,23 21,11 30,16 30,28" fill="#7B42BC" opacity="0.9"/>
+  <polygon points="10,30 19,25 19,30" fill="#7B42BC" opacity="0.5"/>
+</svg>
+{%- elif n == 'packer' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Packer">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#02A8EF" opacity="0.12"/>
+  <rect x="10" y="12" width="20" height="16" rx="2" fill="none" stroke="#02A8EF" stroke-width="1.5"/>
+  <line x1="10" y1="18" x2="30" y2="18" stroke="#02A8EF" stroke-width="1"/>
+  <line x1="10" y1="23" x2="30" y2="23" stroke="#02A8EF" stroke-width="1"/>
+  <line x1="15" y1="12" x2="15" y2="28" stroke="#02A8EF" stroke-width="1"/>
+</svg>
+{%- elif n == 'ansible' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Ansible">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#EE0000" opacity="0.12"/>
+  <circle cx="20" cy="20" r="13" fill="none" stroke="#EE0000" stroke-width="1.5"/>
+  <path d="M14 28 L20 10 L30 26" fill="none" stroke="#EE0000" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <line x1="18" y1="22" x2="26" y2="22" stroke="#EE0000" stroke-width="1.5"/>
+</svg>
+{%- elif n == 'aws' or n == 'aws_ec2' or n == 'aws_vpc' or n == 'aws_s3' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="AWS">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#FF9900" opacity="0.12"/>
+  <path d="M10 24 Q14 28 20 26 Q26 24 30 20" fill="none" stroke="#FF9900" stroke-width="2" stroke-linecap="round"/>
+  <path d="M28 18 L30 20 L28 22" fill="none" stroke="#FF9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="20" y="18" text-anchor="middle" font-size="9" font-family="monospace" fill="#FF9900" font-weight="bold">AWS</text>
+</svg>
+{%- elif n == 'google_cloud_platform' or n == 'gcp' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="GCP">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#4285F4" opacity="0.1"/>
+  <path d="M20 8 a12 12 0 0 1 12 12" stroke="#EA4335" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M32 20 a12 12 0 0 1 -12 12" stroke="#34A853" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M20 32 a12 12 0 0 1 -12 -12" stroke="#FBBC04" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M8 20 a12 12 0 0 1 12 -12" stroke="#4285F4" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="20" cy="20" r="4" fill="#4285F4"/>
+</svg>
+{%- elif n == 'digitalocean' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="DigitalOcean">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#0080FF" opacity="0.12"/>
+  <circle cx="20" cy="18" r="8" fill="none" stroke="#0080FF" stroke-width="2"/>
+  <circle cx="20" cy="18" r="3" fill="#0080FF"/>
+  <line x1="12" y1="28" x2="12" y2="32" stroke="#0080FF" stroke-width="2" stroke-linecap="round"/>
+  <line x1="18" y1="30" x2="18" y2="34" stroke="#0080FF" stroke-width="2" stroke-linecap="round"/>
+</svg>
+{%- elif n == 'nginx' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Nginx">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#009639" opacity="0.12"/>
+  <polygon points="20,6 34,28 6,28" fill="none" stroke="#009639" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="20" y="25" text-anchor="middle" font-size="8" font-family="monospace" fill="#009639" font-weight="bold">N</text>
+</svg>
+{%- elif n == 'python' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Python">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#3776AB" opacity="0.12"/>
+  <path d="M14 8 Q8 8 8 14 L8 22 Q8 26 14 26 L20 26 Q20 28 18 28 L12 28 L12 32 Q12 34 16 34 L24 34 Q30 34 30 28 L30 22 Q30 18 26 18 L20 18 L20 14 Q20 12 22 12 L28 12 L28 8 Q28 6 24 6 Z" fill="none" stroke="#3776AB" stroke-width="1.5"/>
+  <circle cx="16" cy="11" r="1.5" fill="#FFD43B"/>
+  <circle cx="24" cy="29" r="1.5" fill="#FFD43B"/>
+</svg>
+{%- elif n == 'flask' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Flask">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#666" opacity="0.12"/>
+  <path d="M18 8 L18 18 L10 30 Q10 34 20 34 Q30 34 30 30 L22 18 L22 8 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+  <line x1="16" y1="8" x2="24" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="15" cy="28" r="2" fill="currentColor" opacity="0.4"/>
+  <circle cx="22" cy="25" r="1.5" fill="currentColor" opacity="0.3"/>
+</svg>
+{%- elif n == 'mysql' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="MySQL">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#4479A1" opacity="0.12"/>
+  <ellipse cx="20" cy="13" rx="10" ry="4" fill="none" stroke="#4479A1" stroke-width="1.5"/>
+  <path d="M10 13 L10 27 Q10 31 20 31 Q30 31 30 27 L30 13" fill="none" stroke="#4479A1" stroke-width="1.5"/>
+  <line x1="10" y1="19" x2="30" y2="19" stroke="#4479A1" stroke-width="1" stroke-dasharray="2 2"/>
+  <line x1="10" y1="24" x2="30" y2="24" stroke="#4479A1" stroke-width="1" stroke-dasharray="2 2"/>
+</svg>
+{%- elif n == 'mongodb' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="MongoDB">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#47A248" opacity="0.12"/>
+  <path d="M20 6 Q26 14 26 22 Q26 30 20 34 Q14 30 14 22 Q14 14 20 6 Z" fill="none" stroke="#47A248" stroke-width="1.5"/>
+  <line x1="20" y1="26" x2="20" y2="34" stroke="#47A248" stroke-width="2" stroke-linecap="round"/>
+</svg>
+{%- elif n == 'git' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Git">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#F05032" opacity="0.12"/>
+  <path d="M36 19 L21 4 L18 7 L22 11 L10 23 L7 20 L4 23 L19 38 L22 35 L19 32 L31 20 L35 24 Z" fill="none" stroke="#F05032" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>
+{%- elif n == 'bootstrap' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Bootstrap">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#7952B3" opacity="0.15"/>
+  <rect x="10" y="8" width="20" height="24" rx="3" fill="none" stroke="#7952B3" stroke-width="1.5"/>
+  <text x="20" y="24" text-anchor="middle" font-size="14" font-family="serif" fill="#7952B3" font-weight="bold">B</text>
+</svg>
+{%- elif n == 'html' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="HTML">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#E44D26" opacity="0.12"/>
+  <path d="M8 6 L10 32 L20 35 L30 32 L32 6 Z" fill="none" stroke="#E44D26" stroke-width="1.5" stroke-linejoin="round"/>
+  <line x1="14" y1="15" x2="26" y2="15" stroke="#E44D26" stroke-width="1.5"/>
+  <line x1="15" y1="21" x2="25" y2="21" stroke="#E44D26" stroke-width="1.5"/>
+  <line x1="16" y1="27" x2="20" y2="28" stroke="#E44D26" stroke-width="1.5"/>
+</svg>
+{%- elif n == 'bash' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Bash">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#3E474A" opacity="0.15"/>
+  <rect x="6" y="8" width="28" height="24" rx="3" fill="none" stroke="#3E474A" stroke-width="1.5"/>
+  <text x="12" y="22" font-size="9" font-family="monospace" fill="#4CAF50">$&gt;_</text>
+</svg>
+{%- elif n == 'yaml' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="YAML">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#CB171E" opacity="0.12"/>
+  <line x1="10" y1="14" x2="20" y2="14" stroke="#CB171E" stroke-width="2" stroke-linecap="round"/>
+  <line x1="12" y1="20" x2="22" y2="20" stroke="#CB171E" stroke-width="2" stroke-linecap="round"/>
+  <line x1="14" y1="26" x2="24" y2="26" stroke="#CB171E" stroke-width="2" stroke-linecap="round"/>
+  <text x="32" y="18" font-size="7" font-family="monospace" fill="#CB171E">Y</text>
+  <text x="30" y="26" font-size="7" font-family="monospace" fill="#CB171E">ML</text>
+</svg>
+{%- elif n == 'cloudwatch' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="CloudWatch">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#FF9900" opacity="0.12"/>
+  <circle cx="20" cy="20" r="12" fill="none" stroke="#FF9900" stroke-width="1.5"/>
+  <line x1="20" y1="20" x2="20" y2="12" stroke="#FF9900" stroke-width="2" stroke-linecap="round"/>
+  <line x1="20" y1="20" x2="27" y2="22" stroke="#FF9900" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="20" cy="20" r="2" fill="#FF9900"/>
+</svg>
+{%- elif n == 'windows_server' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Windows Server">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#0078D6" opacity="0.12"/>
+  <rect x="6" y="6" width="13" height="13" rx="1" fill="#0078D6" opacity="0.7"/>
+  <rect x="21" y="6" width="13" height="13" rx="1" fill="#0078D6" opacity="0.7"/>
+  <rect x="6" y="21" width="13" height="13" rx="1" fill="#0078D6" opacity="0.7"/>
+  <rect x="21" y="21" width="13" height="13" rx="1" fill="#0078D6" opacity="0.7"/>
+</svg>
+{%- elif n == 'linux' or n == 'arch_linux' -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="Linux">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="#FCC624" opacity="0.12"/>
+  <ellipse cx="20" cy="14" rx="7" ry="8" fill="none" stroke="#FCC624" stroke-width="1.5"/>
+  <circle cx="17" cy="12" r="1.5" fill="#FCC624"/>
+  <circle cx="23" cy="12" r="1.5" fill="#FCC624"/>
+  <path d="M17 17 Q20 20 23 17" fill="none" stroke="#FCC624" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M13 22 L10 32 L15 30 L20 34 L25 30 L30 32 L27 22" fill="none" stroke="#FCC624" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>
+{%- else -%}
+<svg viewBox="0 0 40 40" width="{{ size }}" height="{{ size }}" xmlns="http://www.w3.org/2000/svg" aria-label="{{ name }}">
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="currentColor" opacity="0.12"/>
+  <rect x="2" y="2" width="36" height="36" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="20" y="24" text-anchor="middle" font-size="8" font-family="monospace" fill="currentColor" font-weight="bold">{{ name[:4] | upper }}</text>
+</svg>
+{%- endif %}
+{% endmacro %}

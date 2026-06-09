@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" width="250" height="250">
+  <circle cx="125" cy="125" r="125" fill="#14213D"/>
+  <circle cx="125" cy="92" r="44" fill="#FCA311" opacity="0.8"/>
+  <ellipse cx="125" cy="215" rx="74" ry="56" fill="#FCA311" opacity="0.8"/>
+  <text x="125" y="135" font-family="Georgia,serif" font-size="11" fill="#000" text-anchor="middle" font-weight="bold">Replace with</text>
+  <text x="125" y="150" font-family="Georgia,serif" font-size="11" fill="#000" text-anchor="middle" font-weight="bold">your photo</text>
+</svg>

@@ -1,0 +1,384 @@
+{% extends "base.html" %}
+{% from "macros/tech_icons.html" import icon %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section id="hero" class="hero">
+  <div class="hero-inner container">
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <!-- Recommended: 400x400px square JPG or WebP, min 250KB -->
+        <img
+          src="{{ url_for('static', filename='images/hero-photo.svg') }}"
+          alt="Chelsie Salome - Cloud Infrastructure Engineer"
+          class="hero-photo"
+          onerror="this.src='{{ url_for('static', filename='images/placeholder-avatar.svg') }}'"
+        >
+      </div>
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow" data-i18n="hero.greeting">Hello, I'm</p>
+      <h1 class="hero-name">Chelsie Salome</h1>
+      <p class="hero-tagline" data-i18n="hero.title">IT Professional &nbsp;&middot;&nbsp; Cloud Engineering &amp; Systems Administration</p>
+      <div class="hero-cta-row">
+        <a href="#projects" class="btn btn-gold smooth-scroll" data-i18n="hero.cta_projects">View My Projects</a>
+        <a href="#contact"  class="btn btn-outline smooth-scroll" data-i18n="hero.cta_contact">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true"><span></span></div>
+</section>
+
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section">
+  <div class="container">
+    <h2 class="section-title animate-on-scroll" data-i18n="about.title">About Me</h2>
+
+    <p class="about-intro animate-on-scroll" data-i18n="about.bio">
+      I'm a BCIT Computer Information Technology graduate (CGPA 90/100, With Distinction)
+      with hands-on experience across cloud infrastructure, IT systems administration, and DevOps practices.
+      My background spans a Junior Analyst IT co-op at York House School, academic cloud engineering projects,
+      and a drive to build systems that are reliable, automated, and maintainable.
+    </p>
+
+    <div class="callout-box animate-on-scroll" data-i18n="about.callout">
+      Cloud Infrastructure Engineer with strong foundations in IT Systems Administration
+    </div>
+
+    <div class="expertise-grid">
+      <div class="expertise-card animate-on-scroll">
+        <div class="expertise-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        </div>
+        <h3 class="expertise-title" data-i18n="about.col1.title">Cloud Engineering</h3>
+        <p class="expertise-tech" data-i18n="about.col1.desc">Kubernetes, Docker, Terraform, AWS, Azure, GCP, and IaC — provisioning and orchestrating cloud infrastructure at scale.</p>
+      </div>
+      <div class="expertise-card animate-on-scroll">
+        <div class="expertise-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 15.54a5 5 0 0 1 0-7.07"/></svg>
+        </div>
+        <h3 class="expertise-title" data-i18n="about.col2.title">DevOps Practices</h3>
+        <p class="expertise-tech" data-i18n="about.col2.desc">CI/CD pipelines with Jenkins and GitLab CI, containerization, automation, and rolling deployment strategies.</p>
+      </div>
+      <div class="expertise-card animate-on-scroll">
+        <div class="expertise-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h3 class="expertise-title" data-i18n="about.col3.title">IT Support &amp; Sysadmin</h3>
+        <p class="expertise-tech" data-i18n="about.col3.desc">Proficient in Windows Server environments (Active Directory, DNS, DHCP), Linux administration, and network troubleshooting. Experienced in system configuration, user management, and resolving technical issues in enterprise IT settings.</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline animate-on-scroll">
+      <h3 class="timeline-heading" data-i18n="about.timeline.title">Experience &amp; Education</h3>
+      <div class="timeline-line">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">May 2025 &ndash; Dec 2025</span>
+            <h4 class="timeline-role" data-i18n="about.timeline.job1.title">Junior Analyst, IT Intern</h4>
+            <p class="timeline-org" data-i18n="about.timeline.job1.org">York House School &mdash; Vancouver, BC</p>
+            <ul class="timeline-bullets">
+              <li data-i18n="about.timeline.job1.b1">Resolved 25&ndash;35 tickets/week within a 24-hour SLA across a 400-person campus via Jitbit.</li>
+              <li data-i18n="about.timeline.job1.b2">Managed 1,000+ Apple devices with Mosyle MDM and built Bash/Python automation scripts.</li>
+              <li data-i18n="about.timeline.job1.b3">Administered Active Directory: provisioning, deprovisioning, OU structure, Group Policy.</li>
+              <li data-i18n="about.timeline.job1.b4">Led a network infrastructure refresh across three buildings using Cisco Meraki.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Jan 2024 &ndash; Apr 2026</span>
+            <h4 class="timeline-role" data-i18n="about.timeline.edu1.title">Computer Information Technology, Diploma</h4>
+            <p class="timeline-org" data-i18n="about.timeline.edu1.org">British Columbia Institute of Technology &mdash; Vancouver, BC</p>
+            <ul class="timeline-bullets">
+              <li data-i18n="about.timeline.edu1.b1">CGPA 90/100 &middot; With Distinction</li>
+              <li data-i18n="about.timeline.edu1.b2">Coursework: Cloud Infrastructure, Windows Server Administration, Network Administration, Systems Automation, IT Service Management (ITIL).</li>
+              <li data-i18n="about.timeline.edu1.b3">Certifications in progress: AZ-800, AZ-104, CompTIA Network+ (expected Jun 2026).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Jul 2022 &ndash; Nov 2023</span>
+            <h4 class="timeline-role" data-i18n="about.timeline.job2.title">Customer Account Specialist</h4>
+            <p class="timeline-org" data-i18n="about.timeline.job2.org">Shaw Communications &mdash; Vancouver, BC</p>
+            <ul class="timeline-bullets">
+              <li data-i18n="about.timeline.job2.b1">Primary triage for 40+ daily technical support contacts; resolved hardware, connectivity, and software issues.</li>
+              <li data-i18n="about.timeline.job2.b2">Consistently exceeded customer satisfaction KPI targets (90%+).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Sep 2019 &ndash; Dec 2021</span>
+            <h4 class="timeline-role" data-i18n="about.timeline.edu2.title">Business Administration, Diploma</h4>
+            <p class="timeline-org" data-i18n="about.timeline.edu2.org">Douglas College &mdash; New Westminster, BC</p>
+            <ul class="timeline-bullets">
+              <li>GPA 3.71 / 4.0</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title animate-on-scroll" data-i18n="projects.title">Projects</h2>
+
+    <p class="section-sublabel animate-on-scroll" data-i18n="projects.featured_label">Featured Projects</p>
+    <div class="projects-grid" id="featured-grid">
+      {% for project in featured %}
+      <article class="project-card animate-on-scroll" style="--stagger-delay: {{ loop.index0 * 100 }}ms">
+        <div class="project-card-img-wrap">
+          {% if project.images %}
+          <img
+            src="{{ url_for('static', filename='images/' + project.images[0]) }}"
+            alt="{{ project.title }}"
+            class="project-card-img"
+            loading="lazy"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          >
+          {% endif %}
+          <div class="project-img-placeholder" {% if project.images %}style="display:none"{% endif %}>
+            <span>{{ project.type }}</span>
+          </div>
+          <span class="project-badge">{{ project.type }}</span>
+        </div>
+        <div class="project-card-body">
+          <h3 class="project-card-title">{{ project.title }}</h3>
+          <p class="project-card-desc">{{ project.short_description }}</p>
+          <div class="project-tech-stack">
+            {% for tech in project.technologies[:5] %}
+            <span class="tech-pill">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          <div class="project-card-actions">
+            <a href="/project/{{ project.id }}" class="btn btn-outline-sm" data-i18n="projects.view_details">View Details</a>
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-sm" aria-label="GitHub repository for {{ project.title }}">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 10 4.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/></svg>
+              <span data-i18n="projects.github">GitHub</span>
+            </a>
+            {% endif %}
+            {% if project.youtube_url %}
+            <a href="{{ project.youtube_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-sm" aria-label="Watch demo for {{ project.title }}">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zm3.6 10.4l-5 3A.5.5 0 0 1 8 13V7a.5.5 0 0 1 .6-.4l5 3a.5.5 0 0 1 0 .8z"/></svg>
+              <span data-i18n="projects.watch">Watch Demo</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% else %}
+      <p class="no-content" data-i18n="projects.none">No featured projects found.</p>
+      {% endfor %}
+    </div>
+
+    <!-- Dot indicators for mobile scroll -->
+    <div class="scroll-dots" id="featured-dots" aria-hidden="true">
+      {% for project in featured %}
+      <span class="scroll-dot {% if loop.first %}active{% endif %}"></span>
+      {% endfor %}
+    </div>
+
+    {% if labs %}
+    <p class="section-sublabel section-sublabel-spaced animate-on-scroll" data-i18n="projects.labs_label">Labs &amp; Additional Work</p>
+    <div class="lab-grid">
+      {% for project in labs %}
+      <a href="/project/{{ project.id }}" class="lab-card animate-on-scroll" style="--stagger-delay: {{ loop.index0 * 80 }}ms">
+        <span class="lab-card-type">{{ project.type }}</span>
+        <h3 class="lab-card-title">{{ project.title }}</h3>
+        <p class="lab-card-desc">{{ project.short_description }}</p>
+        <div class="lab-card-footer">
+          <div class="lab-card-tech">
+            {% for tech in project.technologies[:3] %}
+            <span class="lab-tech-pill">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          <span class="lab-details-arrow" aria-hidden="true">&rarr;</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="section">
+  <div class="container">
+    <h2 class="section-title animate-on-scroll" data-i18n="skills.title">Skills &amp; Technologies</h2>
+
+    <!-- Windows Server highlighted callout -->
+    <div class="ws-callout animate-on-scroll">
+      <div class="ws-callout-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+      </div>
+      <div>
+        <h4 class="ws-callout-title" data-i18n="skills.windows_title">Windows Server Administration</h4>
+        <p class="ws-callout-desc" data-i18n="skills.windows_desc">Hands-on experience: Active Directory, Group Policy, DNS, DHCP, IIS</p>
+      </div>
+    </div>
+
+    <!-- Skill categories -->
+    {% set skill_categories = [
+      ("skills.cat1", "Container & Orchestration", ["Kubernetes","Docker","GKE","minikube","Docker Compose","Microservices"]),
+      ("skills.cat2", "CI/CD & DevOps", ["Jenkins","GitLab CI","GitHub Actions","Pipeline Automation","Rolling Deployments","Artifact Management"]),
+      ("skills.cat3", "Infrastructure as Code", ["Terraform","Packer","Ansible","Terraform Modules","Remote State","Infrastructure Automation"]),
+      ("skills.cat4", "Cloud Platforms", ["Google Cloud Platform","AWS EC2","AWS VPC","AWS S3","DynamoDB","CloudWatch","Auto Scaling","Application Load Balancer","DigitalOcean"]),
+      ("skills.cat5", "Backend & Web", ["Python","Flask","SQLAlchemy","Nginx","Jinja2","Bootstrap","HTML","CSS"]),
+      ("skills.cat6", "Databases", ["MySQL","MongoDB"]),
+      ("skills.cat7", "Networking & Systems", ["Linux Administration","Windows Server Administration","Active Directory","DNS","DHCP","Arch Linux","SSH","Load Balancing","VPC Design","NAT Gateway"]),
+      ("skills.cat8", "Languages & Scripting", ["Python","Bash","PowerShell","YAML","SQL"]),
+      ("skills.cat9", "Version Control", ["Git","GitHub","GitLab"])
+    ] %}
+
+    <div class="skill-categories">
+      {% for cat_key, cat_label, skills in skill_categories %}
+      <div class="skill-category animate-on-scroll">
+        <h3 class="skill-cat-title" data-i18n="{{ cat_key }}">{{ cat_label }}</h3>
+        <div class="skill-cloud">
+          {% for skill in skills %}
+          <span class="skill-tag {% if skill in ['Kubernetes','Docker','GKE','Terraform','Jenkins','GitLab CI','GitHub Actions','Python','AWS EC2'] %}skill-md{% else %}skill-sm{% endif %}">{{ skill }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Tech icon grid -->
+    <div class="tech-grid animate-on-scroll">
+      {% set tech_icons = ['Kubernetes','Docker','Terraform','Ansible','Jenkins','GitLab CI','GitHub Actions','Python','Nginx','MySQL','MongoDB','AWS','Git','Linux','GKE','Packer','Bootstrap','Bash'] %}
+      {% for tech in tech_icons %}
+      <div class="tech-item">
+        <div class="tech-icon-wrap">{{ icon(tech, 38) }}</div>
+        <span class="tech-name">{{ tech }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== BEYOND TECH ===== -->
+<section id="beyond-tech" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title animate-on-scroll" data-i18n="beyond.title">Beyond Tech</h2>
+    <p class="beyond-subtitle animate-on-scroll" data-i18n="beyond.subtitle"><em>Impact goes beyond lines of code.</em></p>
+
+    <!-- Culinary Masterclass -->
+    <article class="beyond-card animate-on-scroll">
+      <div class="beyond-card-image">
+        {% if has_culinary_image %}
+        <!-- Recommended: 600x400px JPG or WebP -->
+        <img
+          src="{{ url_for('static', filename='images/extracurricular/culinary-masterclass.jpg') }}"
+          alt="Culinary masterclass - Pilipili Cameroonian Samosas"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        >
+        {% endif %}
+        <div class="beyond-img-placeholder" {% if has_culinary_image %}style="display:none"{% endif %} aria-label="Culinary masterclass photo placeholder">
+          <span data-i18n="beyond.img_placeholder">Image coming soon</span>
+        </div>
+      </div>
+      <div class="beyond-card-body">
+        <span class="beyond-badge" data-i18n="beyond.culinary_badge">Culture &amp; Community</span>
+        <h3 class="beyond-card-title" data-i18n="beyond.culinary_title">Culinary Masterclass: Pilipili Cameroonian Samosas</h3>
+        <p class="beyond-card-date" data-i18n="beyond.culinary_date">2025</p>
+        <p class="beyond-card-desc" data-i18n="beyond.culinary_desc">
+          Beyond lines of code, I had the incredible opportunity to share a piece of my Cameroonian heritage
+          by hosting a culinary masterclass for fellow students, teaching them how to make Pilipili &mdash;
+          traditional Cameroonian Samosas. It was a beautiful reminder that making an impact goes far beyond
+          technology: bringing people together through food, culture, and shared experiences is just as
+          meaningful as solving technical challenges.
+        </p>
+        <blockquote class="beyond-quote" data-i18n="beyond.culinary_quote">
+          &ldquo;A wonderful way to make an impact beyond tech &mdash; and to be known as more than just the tech person.&rdquo;
+        </blockquote>
+      </div>
+    </article>
+
+    <!-- Volunteering -->
+    <article class="beyond-card animate-on-scroll" style="--stagger-delay: 120ms">
+      <div class="beyond-card-image">
+        {% if has_volunteer_image %}
+        <!-- Recommended: 600x400px JPG or WebP -->
+        <img
+          src="{{ url_for('static', filename='images/volunteering/cpca-event.jpg') }}"
+          alt="CPCA 2026 volunteering event"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        >
+        {% endif %}
+        <div class="beyond-img-placeholder" {% if has_volunteer_image %}style="display:none"{% endif %} aria-label="Volunteering event photo placeholder">
+          <span data-i18n="beyond.img_placeholder">Image coming soon</span>
+        </div>
+      </div>
+      <div class="beyond-card-body">
+        <span class="beyond-badge beyond-badge-volunteer" data-i18n="beyond.volunteer_badge">Volunteering</span>
+        <h3 class="beyond-card-title" data-i18n="beyond.volunteer_title">Volunteer &mdash; Canadian Professional Association</h3>
+        <p class="beyond-card-date" data-i18n="beyond.volunteer_date">May 2026 &middot; 1 month &middot; Science and Technology</p>
+        <p class="beyond-card-desc" data-i18n="beyond.volunteer_desc">
+          Supported the successful execution of the CPCA 2026 Event by assisting with logistics, registration,
+          and attendee coordination. Contributed to creating a welcoming environment and ensuring smooth
+          operations for participants and speakers.
+        </p>
+        <ul class="beyond-list">
+          <li data-i18n="beyond.volunteer_b1">Logistics coordination and on-site operational support</li>
+          <li data-i18n="beyond.volunteer_b2">Registration desk management and attendee check-in</li>
+          <li data-i18n="beyond.volunteer_b3">Contributed to a professional, welcoming conference atmosphere</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title animate-on-scroll" data-i18n="contact.title">Let's Connect</h2>
+    <p class="contact-subtitle animate-on-scroll" data-i18n="contact.subtitle">I'm always open to new opportunities and collaborations.</p>
+
+    <div class="contact-buttons animate-on-scroll">
+      <a href="https://github.com/ChelsieSalome" target="_blank" rel="noopener noreferrer" class="contact-btn" aria-label="GitHub">
+        <svg viewBox="0 0 20 20" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 10 4.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/></svg>
+        <span data-i18n="contact.github">GitHub</span>
+      </a>
+      <a href="https://linkedin.com/in/chelsie-lele" target="_blank" rel="noopener noreferrer" class="contact-btn" aria-label="LinkedIn">
+        <svg viewBox="0 0 20 20" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.389 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.779 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 1 1-.003-3.096 1.548 1.548 0 0 1 .003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"/></svg>
+        <span data-i18n="contact.linkedin">LinkedIn</span>
+      </a>
+      <a href="mailto:lelewambochelsie17@gmail.com" class="contact-btn" aria-label="Email">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span data-i18n="contact.email">Email</span>
+      </a>
+    </div>
+
+    <div class="contact-mobile-actions">
+      <a href="mailto:lelewambochelsie17@gmail.com" class="btn btn-gold btn-block" data-i18n="contact.cta_email">Send Me an Email</a>
+      <a href="https://linkedin.com/in/chelsie-lele" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block" data-i18n="contact.cta_linkedin">Connect on LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
