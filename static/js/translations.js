@@ -136,7 +136,7 @@ var translations = {
 
     /* About */
     'about.title': '\u00c0 propos de moi',
-    'about.bio':   "Dipl\u00f4m\u00e9e en Technologies de l'Information Informatique du BCIT (CGPA 90/100, Avec Distinction), j'ai une exp\u00e9rience pratique en infrastructure cloud, administration des syst\u00e8mes et DevOps. Mon stage \u00e0 York House School m'a permis d'accompagner plus de 400 utilisateurs, g\u00e9rer plus de 1\u00a0000 appareils et piloter des mises \u00e0 niveau d'infrastructure — tout en approfondissant mes comp\u00e9tences en Kubernetes, Terraform et CI/CD.",
+    'about.bio':   "Dipl\u00f4m\u00e9e en Technologies de l'Information Informatique du BCIT (CGPA 90/100, Avec Distinction), j'ai une exp\u00e9rience pratique en infrastructure cloud, administration des syst\u00e8mes et DevOps. Mon experience \u00e0 York House School m'a permis d'accompagner plus de 400 utilisateurs, g\u00e9rer plus de 1\u00a0000 appareils et piloter des mises \u00e0 niveau d'infrastructure — tout en approfondissant mes comp\u00e9tences en Kubernetes, Terraform et CI/CD.",
     'about.callout': 'Ing\u00e9nieure Infrastructure Cloud avec de solides bases en sysadmin IT',
     'about.exp1.title': 'Ing\u00e9nierie Cloud',
     'about.exp1.desc':  'Kubernetes, Docker, Terraform, AWS, GCP — conception et provisionnement d\u2019infrastructures cloud \u00e9volutives.',
