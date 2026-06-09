@@ -744,6 +744,43 @@ section { padding: 100px 0; }
 .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
 /* ============================================================
+   7b. MOBILE LANGUAGE TAB & FLOATING THEME BUTTON
+   ============================================================ */
+.mobile-lang-tab {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px;
+  background: transparent; border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 2px 6px;
+  font: inherit;
+  transition: color var(--t);
+}
+.mobile-lang-tab:hover { color: var(--gold); }
+.mobile-lang-tab.lang-active { color: var(--gold); }
+.mobile-lang-label {
+  font-size: 0.65rem; font-weight: 800; letter-spacing: 0.06em;
+  font-family: var(--font-body); line-height: 1;
+}
+
+/* Floating theme FAB — top-right, visible only on mobile */
+.mobile-theme-fab {
+  display: none;
+  position: fixed; top: 14px; right: 14px; z-index: 950;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  transition: color var(--t), border-color var(--t), background var(--t);
+  cursor: pointer;
+}
+.mobile-theme-fab:hover { color: var(--gold); border-color: var(--gold); }
+@media (max-width: 768px) { .mobile-theme-fab { display: flex; } }
+
+/* ============================================================
    18. RESPONSIVE MOBILE
    ============================================================ */
 @media (max-width: 768px) {
@@ -758,4 +795,5 @@ section { padding: 100px 0; }
 @media (prefers-reduced-motion: reduce) {
   .animate-on-scroll { transition: none !important; opacity: 1 !important; transform: none !important; }
   .hero-photo:hover { transform: none; }
+
 }

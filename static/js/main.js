@@ -93,11 +93,17 @@ function applyLanguage(lang, isInit) {
     if (val !== el.getAttribute('data-i18n')) el.textContent = val;
   });
 
-  /* 2. Language button active state */
+  /* 2. Language button active state — desktop */
   var bEn = document.getElementById('lang-en');
   var bFr = document.getElementById('lang-fr');
   if (bEn) { bEn.classList.toggle('active', lang === 'en'); bEn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false'); }
   if (bFr) { bFr.classList.toggle('active', lang === 'fr'); bFr.setAttribute('aria-pressed', lang === 'fr' ? 'true' : 'false'); }
+
+  /* 2b. Mobile language tab label + active state */
+  var mobileBtn   = document.getElementById('mobile-lang-toggle');
+  var mobileLbl   = mobileBtn ? mobileBtn.querySelector('.mobile-lang-label') : null;
+  if (mobileLbl)  mobileLbl.textContent = lang.toUpperCase();
+  if (mobileBtn)  mobileBtn.classList.toggle('lang-active', lang === 'fr');
 
   /* 3. Translate project cards on homepage */
   translateProjectCards(lang);
@@ -280,6 +286,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var bFr = document.getElementById('lang-fr');
   if (bEn) bEn.addEventListener('click', function() { setLanguage('en'); });
   if (bFr) bFr.addEventListener('click', function() { setLanguage('fr'); });
+
+  /* Mobile language tab — tap cycles EN → FR → EN */
+  var mobileLangBtn = document.getElementById('mobile-lang-toggle');
+  if (mobileLangBtn) {
+    mobileLangBtn.addEventListener('click', function() {
+      setLanguage(currentLang === 'en' ? 'fr' : 'en');
+    });
+  }
 
   initFooterYear();
   initScrollAnimations();
