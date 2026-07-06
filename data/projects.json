@@ -285,6 +285,56 @@
       "images": ["projects/placeholder-project1.svg"],
       "featured": false,
       "diagram_type": "aws_asg"
-    }
+    },
+    {
+  "id": 12,
+  "title": "Enterprise Active Directory Infrastructure — Nyanga Nails",
+  "title_fr": "Infrastructure Active Directory d’Entreprise — Nyanga Nails",
+  "type": "Windows Server & Identity",
+  "type_fr": "Windows Server et Gestion des Identités",
+  "short_description": "Designed and deployed a multi-site Active Directory environment for a fictional multi-location business, including dual domain controllers, five AD sites across Canadian cities, Read-Only DCs, hybrid identity with Azure AD Connect, internal PKI, RADIUS/NPS authentication, and cross-forest DNS resolution.",
+  "short_description_fr": "Conception et déploiement d’un environnement Active Directory multi-sites pour une entreprise fictive multi-localisations, incluant deux contrôleurs de domaine, cinq sites AD dans des villes canadiennes, des RODC, l’identité hybride via Azure AD Connect, une PKI interne, l’authentification RADIUS/NPS et la résolution DNS inter-forêts.",
+  "full_description": "This project simulates the real-world identity and directory infrastructure of a growing multi-location business. The fictional company, Nyanga Nails, operates nail salon locations across Vancouver, Montreal, Toronto, and Calgary, each requiring centralized authentication, role-based access, and branch-aware Group Policy. The lab was built on VMware with Windows Server VMs using static IP addressing on isolated networks, and designed to mirror the complexity of enterprise environments managed daily by Tier 2 technicians and junior system administrators.",
+  "full_description_fr": "Ce projet simule l’infrastructure d’identité et d’annuaire réelle d’une entreprise multi-sites en croissance. L’entreprise fictive Nyanga Nails exploite des salons de manucure à Vancouver, Montréal, Toronto et Calgary, chacun nécessitant une authentification centralisée, un contrôle d’accès basé sur les rôles et des stratégies de groupe adaptées aux succursales. Le lab a été construit sur VMware avec des machines virtuelles Windows Server sur des réseaux isolés, conçu pour reproduire la complexité des environnements d’entreprise gérés au quotidien par des techniciens de niveau 2 et des administrateurs système juniors.",
+  "problem": "Enterprise organizations with multiple locations require a robust, fault-tolerant identity infrastructure that can authenticate users at any branch, apply location-specific policies, restrict sensitive systems to read-only access at remote sites, and synchronize on-premises identities with cloud platforms. Building and administering such an environment requires hands-on knowledge of Windows Server, Active Directory Sites and Services, DNS, DHCP, and hybrid identity management — skills that cannot be developed from documentation alone.",
+  "problem_fr": "Les organisations multi-sites nécessitent une infrastructure d’identité robuste et tolérante aux pannes capable d’authentifier les utilisateurs dans n’importe quelle succursale, d’appliquer des stratégies spécifiques à chaque emplacement, de restreindre l’accès en lecture seule sur les sites distants et de synchroniser les identités locales avec les plateformes cloud. Construire et administrer un tel environnement exige une maîtrise pratique de Windows Server, Active Directory Sites et Services, DNS, DHCP et la gestion des identités hybrides — des compétences qui ne peuvent pas s’acquérir par la documentation seule.",
+  "solution": "Designed the full infrastructure from a structured planning document, then built and configured the environment progressively. The domain corp.nianganails.com was established with a primary domain controller (DC-VAN-01) hosting DNS, DHCP, and Global Catalog services, backed by a secondary DC and two Read-Only Domain Controllers for branch security. Five AD sites were configured in Active Directory Sites and Services and registered in DNS to enable site-aware client authentication. The OU structure was designed around real business departments and branch locations, with nested sub-OUs for POS devices, workstations, and user accounts. Key server roles were provisioned including a Certificate Authority for internal PKI, a RADIUS/NPS server for network authentication, Azure AD Connect for hybrid identity synchronization with Entra ID, WSUS for patch management, and a print server with department-scoped shared printers. A conditional DNS forwarder was configured to enable cross-domain name resolution with a second forest (corp.niangahair.com), demonstrating inter-forest trust preparation.",
+  "solution_fr": "Conçu l’infrastructure complète à partir d’un document de planification structuré, puis construit et configuré l’environnement progressivement. Le domaine corp.nianganails.com a été établi avec un contrôleur de domaine principal (DC-VAN-01) hébergeant les services DNS, DHCP et Catalogue Global, appuyé par un DC secondaire et deux contrôleurs en lecture seule pour la sécurité des succursales. Cinq sites AD ont été configurés dans Active Directory Sites et Services et enregistrés dans DNS pour permettre une authentification client sensible au site. La structure d’unités organisationnelles a été conçue autour des départements et des emplacements réels, avec des sous-UO imbriquées pour les terminaux PDV, les postes de travail et les comptes utilisateurs. Les rôles serveur clés provisonnés incluent une Autorité de Certification pour la PKI interne, un serveur RADIUS/NPS pour l’authentification réseau, Azure AD Connect pour la synchronisation des identités hybrides avec Entra ID, WSUS pour la gestion des correctifs et un serveur d’impression avec imprimantes partagées par département. Un redirecteur DNS conditionnel a été configuré pour permettre la résolution de noms inter-domaines avec une deuxième forêt (corp.niangahair.com), démontrant la préparation à une relation d’approbation inter-forêts.",
+  "technologies": [
+    "Windows Server",
+    "Active Directory",
+    "DNS",
+    "DHCP",
+    "Group Policy",
+    "VMware",
+    "Azure AD Connect",
+    "Entra ID",
+    "RADIUS/NPS",
+    "PKI / Certificate Authority",
+    "WSUS",
+    "Read-Only Domain Controllers",
+    "Active Directory Sites and Services",
+    "PowerShell"
+  ],
+  "challenges": "Configuring site-aware DNS so that clients in each branch authenticated against the nearest domain controller required careful alignment between AD Sites and Services, subnet definitions, and DNS site records. Setting up Read-Only Domain Controllers introduced additional complexity around password replication policies and allowed/denied attribute sets. Establishing the conditional forwarder to the second forest required coordinating DNS on both sides to ensure bidirectional name resolution without creating circular dependencies. Planning the OU hierarchy to support both current and future Group Policy requirements, while keeping it manageable, required thinking through the business logic before touching the console.",
+  "challenges_fr": "La configuration du DNS sensible au site pour que les clients de chaque succursale s’authentifient auprès du contrôleur de domaine le plus proche a nécessité un alignement minutieux entre Sites et Services AD, les définitions de sous-réseaux et les enregistrements de sites DNS. La mise en place des contrôleurs en lecture seule a introduit une complexité supplémentaire autour des stratégies de réplication des mots de passe et des ensembles d’attributs autorisés ou refusés. La configuration du redirecteur conditionnel vers la deuxième forêt a nécessité de coordonner le DNS des deux côtés pour garantir une résolution de noms bidirectionnelle sans créer de dépendances circulaires. La planification de la structure d’UO pour soutenir les besoins actuels et futurs en matière de stratégies de groupe, tout en la maintenant gérable, a requis une réflexion approfondie sur la logique métier avant de toucher à la console.",
+  "impact": "This environment demonstrates competency in the core infrastructure skills required for Tier 2 MSP work and junior system administrator roles: multi-site Active Directory design, DC redundancy and RODC deployment, DNS architecture, hybrid identity with Azure AD Connect, and structured OU/GPO administration. The planning document and screenshot evidence confirm this was built with enterprise naming conventions, realistic server roles, and a business-driven structure. The five-site topology, RADIUS/NPS integration, and internal PKI place this well beyond entry-level lab work.",
+  "impact_fr": "Cet environnement démontre la maîtrise des compétences d’infrastructure fondamentales requises pour les postes de technicien de niveau 2 en MSP et d’administrateur système junior : conception Active Directory multi-sites, redondance des DC et déploiement de RODC, architecture DNS, identité hybride avec Azure AD Connect et administration structurée des UO et des GPO. Le document de planification et les captures d’écran confirment que cet environnement a été construit avec des conventions de nommage d’entreprise, des rôles serveur réalistes et une structure guidée par la logique métier. La topologie à cinq sites, l’intégration RADIUS/NPS et la PKI interne placent ce travail bien au-delà d’un exercice de laboratoire débutant.",
+  "github_url": null,
+  "demo_url": null,
+  "youtube_url": null,
+  "images": [
+    "projects/ad-lab/architecture.svg",
+    "projects/ad-lab/ad-domain-controllers.png",
+    "projects/ad-lab/ad-forward-lookup-zone.png",
+    "projects/ad-lab/ad-ous.png",
+    "projects/ad-lab/ad-groups.png",
+    "projects/ad-lab/ad-users.png",
+    "projects/ad-lab/conditional-forwarder.png",
+    "projects/ad-lab/ad-dns-sites.png"
+  ],
+  "featured": true,
+  "diagram_type": "ad_lab"
+  }
   ]
 }

@@ -1,0 +1,269 @@
+<svg viewBox="0 0 900 620" width="900" height="620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Enterprise Active Directory Architecture — Nyanga Nails">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#FCA311"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#4285F4"/>
+    </marker>
+    <marker id="arr-dot" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#9CA3AF"/>
+    </marker>
+    <style>
+      text { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+      .label-main { font-size: 11px; fill: #FFFFFF; font-weight: 600; }
+      .label-sub  { font-size: 9px;  fill: #9CA3AF; }
+      .label-gold { font-size: 10px; fill: #FCA311; font-weight: 700; }
+      .label-sec  { font-size: 9px;  fill: #FCA311; }
+      .section-title { font-size: 10px; fill: #FCA311; font-weight: 700; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="620" fill="#0B1929" rx="10"/>
+
+  <!-- ================================================================
+       DOMAIN HEADER BANNER
+       ================================================================ -->
+  <rect x="20" y="12" width="860" height="32" rx="5" fill="rgba(252,163,17,0.1)" stroke="#FCA311" stroke-width="1"/>
+  <text x="450" y="24" text-anchor="middle" class="label-gold" font-size="12">corp.nianganails.com</text>
+  <text x="450" y="37" text-anchor="middle" class="label-sub">Active Directory Forest · Domain: nianganails.com (public) / corp.nianganails.com (internal)</text>
+
+  <!-- ================================================================
+       DOMAIN CONTROLLERS TIER (top-left)
+       ================================================================ -->
+  <rect x="20" y="56" width="370" height="195" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(252,163,17,0.35)" stroke-width="1" stroke-dasharray="5 3"/>
+  <text x="30" y="72" class="section-title">DOMAIN CONTROLLERS</text>
+
+  <!-- DC-VAN-01 (Primary — highlighted) -->
+  <rect x="34" y="80" width="162" height="68" rx="4" fill="rgba(252,163,17,0.12)" stroke="#FCA311" stroke-width="1.5"/>
+  <text x="115" y="97"  text-anchor="middle" class="label-gold">DC-VAN-01</text>
+  <text x="115" y="110" text-anchor="middle" class="label-sub">Primary DC · 192.168.14.10</text>
+  <text x="115" y="122" text-anchor="middle" class="label-sub">DNS · DHCP · Global Catalog</text>
+  <rect x="46" y="83"  width="42" height="10" rx="2" fill="#FCA311"/>
+  <text x="67" y="92"  text-anchor="middle" font-size="7" fill="#000" font-weight="700">PRIMARY</text>
+
+  <!-- DC-VAN-02 -->
+  <rect x="212" y="80" width="162" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="293" y="97"  text-anchor="middle" class="label-main">DC-VAN-02</text>
+  <text x="293" y="110" text-anchor="middle" class="label-sub">Secondary DC</text>
+  <text x="293" y="122" text-anchor="middle" class="label-sub">192.168.14.11</text>
+
+  <!-- RODC-01 -->
+  <rect x="34" y="162" width="162" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="115" y="179" text-anchor="middle" class="label-main">RODC-01</text>
+  <text x="115" y="192" text-anchor="middle" class="label-sub">Read-Only DC</text>
+  <text x="115" y="205" text-anchor="middle" class="label-sub">Vancouver Branch</text>
+
+  <!-- VAN-SVR1 -->
+  <rect x="212" y="162" width="162" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="293" y="179" text-anchor="middle" class="label-main">VAN-SVR1</text>
+  <text x="293" y="192" text-anchor="middle" class="label-sub">Global Catalog</text>
+  <text x="293" y="205" text-anchor="middle" class="label-sub">Member Server</text>
+
+  <!-- Replication arrows between DCs -->
+  <line x1="196" y1="114" x2="212" y2="114" stroke="#FCA311" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="212" y1="120" x2="196" y2="120" stroke="#FCA311" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="115" y1="148" x2="115" y2="162" stroke="rgba(252,163,17,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="293" y1="148" x2="293" y2="162" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="3 2"/>
+
+  <!-- ================================================================
+       SERVER ROLES (top-right)
+       ================================================================ -->
+  <rect x="405" y="56" width="475" height="195" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(252,163,17,0.35)" stroke-width="1" stroke-dasharray="5 3"/>
+  <text x="415" y="72" class="section-title">SERVER ROLES</text>
+
+  <!-- CA-VAN-01 -->
+  <rect x="418" y="80" width="130" height="60" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <text x="483" y="100" text-anchor="middle" class="label-main">CA-VAN-01</text>
+  <text x="483" y="113" text-anchor="middle" class="label-sub">Certificate Authority</text>
+  <text x="483" y="126" text-anchor="middle" class="label-sub">Internal PKI</text>
+
+  <!-- RADIUS-VAN-01 -->
+  <rect x="564" y="80" width="130" height="60" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <text x="629" y="100" text-anchor="middle" class="label-main">RADIUS-VAN-01</text>
+  <text x="629" y="113" text-anchor="middle" class="label-sub">NPS Server</text>
+  <text x="629" y="126" text-anchor="middle" class="label-sub">Network Auth</text>
+
+  <!-- WSUS-VAN-01 -->
+  <rect x="710" y="80" width="155" height="60" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <text x="787" y="100" text-anchor="middle" class="label-main">WSUS-VAN-01</text>
+  <text x="787" y="113" text-anchor="middle" class="label-sub">Patch Management</text>
+  <text x="787" y="126" text-anchor="middle" class="label-sub">Windows Updates</text>
+
+  <!-- ADC-VAN-01 -->
+  <rect x="418" y="156" width="130" height="60" rx="4" fill="rgba(66,133,244,0.1)" stroke="#4285F4" stroke-width="1.2"/>
+  <text x="483" y="176" text-anchor="middle" class="label-main" fill="#7FB3FA">ADC-VAN-01</text>
+  <text x="483" y="189" text-anchor="middle" class="label-sub">Azure AD Connect</text>
+  <text x="483" y="202" text-anchor="middle" class="label-sub">Hybrid Identity Sync</text>
+
+  <!-- PRT-VAN-01 -->
+  <rect x="564" y="156" width="130" height="60" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <text x="629" y="176" text-anchor="middle" class="label-main">PRT-VAN-01</text>
+  <text x="629" y="189" text-anchor="middle" class="label-sub">Print Server</text>
+  <text x="629" y="202" text-anchor="middle" class="label-sub">Dept. Shared Printers</text>
+
+  <!-- ================================================================
+       AD SITES (middle band)
+       ================================================================ -->
+  <rect x="20" y="267" width="570" height="70" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(252,163,17,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="30" y="283" class="section-title">AD SITES &amp; SERVICES (5 Sites)</text>
+
+  <!-- Site boxes -->
+  <rect x="30"  y="290" width="85" height="36" rx="3" fill="rgba(252,163,17,0.08)" stroke="rgba(252,163,17,0.4)" stroke-width="1"/>
+  <text x="72"  y="307" text-anchor="middle" class="label-sec">Vancouver</text>
+  <text x="72"  y="319" text-anchor="middle" class="label-sub">192.168.14.x</text>
+
+  <rect x="128" y="290" width="85" height="36" rx="3" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="170" y="307" text-anchor="middle" class="label-sub" fill="#ccc">Montreal</text>
+  <text x="170" y="319" text-anchor="middle" class="label-sub">Remote Site</text>
+
+  <rect x="226" y="290" width="85" height="36" rx="3" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="268" y="307" text-anchor="middle" class="label-sub" fill="#ccc">Toronto</text>
+  <text x="268" y="319" text-anchor="middle" class="label-sub">Remote Site</text>
+
+  <rect x="324" y="290" width="85" height="36" rx="3" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="366" y="307" text-anchor="middle" class="label-sub" fill="#ccc">Calgary</text>
+  <text x="366" y="319" text-anchor="middle" class="label-sub">Remote Site</text>
+
+  <rect x="422" y="290" width="152" height="36" rx="3" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="498" y="307" text-anchor="middle" class="label-sub" fill="#888">Default-First-Site</text>
+  <text x="498" y="319" text-anchor="middle" class="label-sub">Registered in DNS</text>
+
+  <!-- ================================================================
+       OU HIERARCHY (bottom-left)
+       ================================================================ -->
+  <rect x="20" y="352" width="380" height="250" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(252,163,17,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="30" y="368" class="section-title">OU HIERARCHY — corp.nianganails.com</text>
+
+  <!-- Root domain -->
+  <rect x="155" y="375" width="90" height="26" rx="3" fill="rgba(252,163,17,0.15)" stroke="#FCA311" stroke-width="1"/>
+  <text x="200" y="393" text-anchor="middle" class="label-gold" font-size="9">corp.nianganails.com</text>
+
+  <!-- Vertical trunk -->
+  <line x1="200" y1="401" x2="200" y2="415" stroke="rgba(252,163,17,0.4)" stroke-width="1"/>
+  <!-- Horizontal bar -->
+  <line x1="50"  y1="415" x2="350" y2="415" stroke="rgba(252,163,17,0.4)" stroke-width="1"/>
+
+  <!-- Branch drops -->
+  <line x1="80"  y1="415" x2="80"  y2="430" stroke="rgba(252,163,17,0.4)" stroke-width="1"/>
+  <line x1="200" y1="415" x2="200" y2="430" stroke="rgba(252,163,17,0.4)" stroke-width="1"/>
+  <line x1="320" y1="415" x2="320" y2="430" stroke="rgba(252,163,17,0.4)" stroke-width="1"/>
+
+  <!-- HeadOffice OU -->
+  <rect x="30"  y="430" width="100" height="24" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(252,163,17,0.35)" stroke-width="1"/>
+  <text x="80"  y="447" text-anchor="middle" class="label-sub" fill="#FCA311">HeadOffice</text>
+  <line x1="80"  y1="454" x2="80"  y2="465" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="35"  y1="465" x2="125" y2="465" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="45"  y1="465" x2="45"  y2="474" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="80"  y1="465" x2="80"  y2="474" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="115" y1="465" x2="115" y2="474" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="45"  y="483" text-anchor="middle" class="label-sub" font-size="8">Users</text>
+  <text x="80"  y="483" text-anchor="middle" class="label-sub" font-size="8">Groups</text>
+  <text x="115" y="483" text-anchor="middle" class="label-sub" font-size="8">ITAdmins</text>
+
+  <!-- Restaurants OU -->
+  <rect x="150" y="430" width="100" height="24" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(252,163,17,0.35)" stroke-width="1"/>
+  <text x="200" y="447" text-anchor="middle" class="label-sub" fill="#FCA311">Restaurants</text>
+  <line x1="200" y1="454" x2="200" y2="465" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="155" y1="465" x2="245" y2="465" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="165" y1="465" x2="165" y2="474" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="200" y1="465" x2="200" y2="474" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="235" y1="465" x2="235" y2="474" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="165" y="483" text-anchor="middle" class="label-sub" font-size="8">Vancouver</text>
+  <text x="200" y="483" text-anchor="middle" class="label-sub" font-size="8">Montreal</text>
+  <text x="235" y="483" text-anchor="middle" class="label-sub" font-size="8">Toronto</text>
+  <text x="200" y="495" text-anchor="middle" class="label-sub" font-size="7" fill="#666">POS Devices · Workstations</text>
+
+  <!-- Servers OU -->
+  <rect x="270" y="430" width="100" height="24" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(252,163,17,0.35)" stroke-width="1"/>
+  <text x="320" y="447" text-anchor="middle" class="label-sub" fill="#FCA311">Servers</text>
+  <line x1="320" y1="454" x2="320" y2="465" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="285" y1="465" x2="355" y2="465" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="295" y1="465" x2="295" y2="474" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="320" y1="465" x2="320" y2="474" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <line x1="345" y1="465" x2="345" y2="474" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="295" y="483" text-anchor="middle" class="label-sub" font-size="8">DCs</text>
+  <text x="320" y="483" text-anchor="middle" class="label-sub" font-size="8">FileSvr</text>
+  <text x="345" y="483" text-anchor="middle" class="label-sub" font-size="8">AppSvr</text>
+
+  <!-- DNS / GPO info row -->
+  <rect x="30" y="510" width="160" height="28" rx="3" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="110" y="523" text-anchor="middle" class="label-sub">Forward Lookup Zone:</text>
+  <text x="110" y="534" text-anchor="middle" class="label-sub">corp.nianganails.com</text>
+
+  <rect x="205" y="510" width="175" height="28" rx="3" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="292" y="523" text-anchor="middle" class="label-sub">Group Policy: Location-based</text>
+  <text x="292" y="534" text-anchor="middle" class="label-sub">+ Dept. OUs + ITAdmins</text>
+
+  <!-- ================================================================
+       AZURE AD / HYBRID IDENTITY (bottom-right, top)
+       ================================================================ -->
+  <rect x="415" y="352" width="465" height="130" rx="6" fill="rgba(66,133,244,0.06)" stroke="rgba(66,133,244,0.4)" stroke-width="1"/>
+  <text x="425" y="368" class="section-title" fill="#7FB3FA">HYBRID IDENTITY — Azure AD / Entra ID</text>
+
+  <!-- Azure AD cloud shape (simplified rect with cloud label) -->
+  <rect x="590" y="375" width="265" height="90" rx="12" fill="rgba(66,133,244,0.12)" stroke="#4285F4" stroke-width="1.5"/>
+  <text x="722" y="403" text-anchor="middle" class="label-main" fill="#7FB3FA">Azure AD / Entra ID</text>
+  <text x="722" y="418" text-anchor="middle" class="label-sub">Cloud Identity Platform</text>
+  <text x="722" y="431" text-anchor="middle" class="label-sub">SSO · MFA · Conditional Access</text>
+  <text x="722" y="445" text-anchor="middle" class="label-sub">Synced from on-premises AD</text>
+
+  <!-- ADC-VAN-01 to Azure AD sync arrow -->
+  <line x1="548" y1="186" x2="548" y2="352" stroke="rgba(66,133,244,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="548" y1="352" x2="590" y2="415" stroke="#4285F4" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <rect x="508" y="295" width="80" height="18" rx="3" fill="rgba(66,133,244,0.12)"/>
+  <text x="548" y="308" text-anchor="middle" font-size="8" fill="#7FB3FA">Azure AD Sync</text>
+
+  <!-- On-prem AD box (left side of hybrid section) -->
+  <rect x="426" y="375" width="148" height="90" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="500" y="400" text-anchor="middle" class="label-main">On-Premises AD</text>
+  <text x="500" y="415" text-anchor="middle" class="label-sub">corp.nianganails.com</text>
+  <text x="500" y="430" text-anchor="middle" class="label-sub">DC-VAN-01 / DC-VAN-02</text>
+  <text x="500" y="445" text-anchor="middle" class="label-sub">Authoritative Source</text>
+  <!-- sync arrow -->
+  <line x1="574" y1="420" x2="588" y2="420" stroke="#4285F4" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+  <text x="581" y="413" text-anchor="middle" font-size="8" fill="#7FB3FA">Sync</text>
+
+  <!-- ================================================================
+       SECOND FOREST / CONDITIONAL FORWARDER (bottom-right)
+       ================================================================ -->
+  <rect x="415" y="495" width="465" height="107" rx="6" fill="rgba(255,255,255,0.015)" stroke="rgba(156,163,175,0.3)" stroke-width="1" stroke-dasharray="5 3"/>
+  <text x="425" y="511" class="section-title" fill="#9CA3AF">SECOND FOREST — Conditional DNS Forwarder</text>
+
+  <!-- Second forest box -->
+  <rect x="426" y="518" width="210" height="72" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(156,163,175,0.25)" stroke-width="1"/>
+  <text x="531" y="540" text-anchor="middle" class="label-main" fill="#9CA3AF">corp.niangahair.com</text>
+  <text x="531" y="554" text-anchor="middle" class="label-sub">Second Forest / Domain</text>
+  <text x="531" y="567" text-anchor="middle" class="label-sub">Separate AD Infrastructure</text>
+  <text x="531" y="580" text-anchor="middle" class="label-sub">(Screenshots pending)</text>
+
+  <!-- Conditional forwarder arrow (dotted) -->
+  <line x1="636" y1="554" x2="660" y2="554" stroke="#9CA3AF" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arr-dot)"/>
+  <line x1="660" y1="554" x2="636" y2="554" stroke="#9CA3AF" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arr-dot)"/>
+
+  <!-- DNS forwarder detail box -->
+  <rect x="668" y="518" width="195" height="72" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(156,163,175,0.25)" stroke-width="1"/>
+  <text x="765" y="540" text-anchor="middle" class="label-sub" fill="#9CA3AF">DNS Conditional Forwarder</text>
+  <text x="765" y="553" text-anchor="middle" class="label-sub">corp.nianganails.com DNS</text>
+  <text x="765" y="566" text-anchor="middle" class="label-sub">forwards queries for</text>
+  <text x="765" y="579" text-anchor="middle" class="label-sub">corp.niangahair.com → DC</text>
+
+  <!-- Dotted line from DC-VAN-01 down to second forest section -->
+  <line x1="200" y1="251" x2="200" y2="267" stroke="rgba(252,163,17,0.25)" stroke-width="1" stroke-dasharray="3 2"/>
+
+  <!-- ================================================================
+       LEGEND
+       ================================================================ -->
+  <rect x="20" y="598" width="860" height="16" rx="3" fill="rgba(255,255,255,0.02)"/>
+  <line x1="30"  y1="606" x2="58"  y2="606" stroke="#FCA311" stroke-width="1.5"/>
+  <text x="62"  y="610" font-size="8" fill="#9CA3AF">AD Replication</text>
+  <line x1="140" y1="606" x2="168" y2="606" stroke="#4285F4" stroke-width="1.5"/>
+  <text x="172" y="610" font-size="8" fill="#9CA3AF">Azure Sync</text>
+  <line x1="240" y1="606" x2="268" y2="606" stroke="#9CA3AF" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="272" y="610" font-size="8" fill="#9CA3AF">Conditional DNS Forwarder</text>
+  <rect x="420" y="602" width="8" height="8" rx="1" fill="rgba(252,163,17,0.15)" stroke="#FCA311" stroke-width="0.8"/>
+  <text x="432" y="610" font-size="8" fill="#9CA3AF">Primary / GC DC</text>
+  <rect x="530" y="602" width="8" height="8" rx="1" fill="rgba(66,133,244,0.1)" stroke="#4285F4" stroke-width="0.8"/>
+  <text x="542" y="610" font-size="8" fill="#9CA3AF">Azure AD Connect / Hybrid</text>
+</svg>
