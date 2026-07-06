@@ -822,12 +822,6 @@ section { padding: 100px 0; }
   gap: 16px;
 }
 
-@media (min-width: 769px) {
-  .evidence-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .evidence-item {
   border-radius: var(--radius-card);
   overflow: hidden;

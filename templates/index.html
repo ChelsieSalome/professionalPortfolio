@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros/diagram_previews.html" import gke_preview, ci_pipelines_preview, nginx_lb_preview, drugs2door_preview, lab_preview %}
+{% from "macros/diagram_previews.html" import gke_preview, ci_pipelines_preview, nginx_lb_preview, drugs2door_preview, lab_preview, k8s_lab_preview, terraform_aws_preview, packer_terraform_preview, aws_networking_preview, ansible_preview, terraform_modules_preview, aws_asg_preview, ad_lab_preview %}
 
 {% block content %}
 
@@ -106,6 +106,7 @@
           {% elif project.diagram_type == 'ci_pipelines' %}{{ ci_pipelines_preview() }}
           {% elif project.diagram_type == 'nginx_lb' %}{{ nginx_lb_preview() }}
           {% elif project.diagram_type == 'drugs2door' %}{{ drugs2door_preview() }}
+          {% elif project.diagram_type == 'ad_lab' %}{{ ad_lab_preview() }}
           {% else %}{{ lab_preview() }}
           {% endif %}
         </div>
@@ -140,7 +141,18 @@
     <div class="lab-grid">
       {% for project in labs %}
       <article class="project-card animate-on-scroll" data-project-id="{{ project.id }}" style="--delay:{{ loop.index0 * 60 }}ms">
-        <div class="card-diagram">{{ lab_preview() }}</div>
+        <div class="card-diagram">
+          {%- if project.diagram_type == 'k8s_lab' %}{{ k8s_lab_preview() }}
+          {%- elif project.diagram_type == 'terraform_aws' %}{{ terraform_aws_preview() }}
+          {%- elif project.diagram_type == 'packer_terraform' %}{{ packer_terraform_preview() }}
+          {%- elif project.diagram_type == 'aws_networking' %}{{ aws_networking_preview() }}
+          {%- elif project.diagram_type == 'ansible' %}{{ ansible_preview() }}
+          {%- elif project.diagram_type == 'terraform_modules' %}{{ terraform_modules_preview() }}
+          {%- elif project.diagram_type == 'aws_asg' %}{{ aws_asg_preview() }}
+          {%- elif project.diagram_type == 'ad_lab' %}{{ ad_lab_preview() }}
+          {%- else %}{{ lab_preview() }}
+          {%- endif %}
+        </div>
         <div class="card-body">
           <div class="card-top">
             <span class="project-type-badge">{{ project.type }}</span>
